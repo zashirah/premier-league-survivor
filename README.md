@@ -55,8 +55,10 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 |      React       | __ |
 |   React Router   | __ |
 | React SemanticUI | __ |
-|     Express      | __ |
-|  Express Router  | __ |
+|     Ruby      | __ |
+|  Rails | __ |
+|  Styled Components | __ |
+|  Framer Motion | __ |
 
 <br>
 
@@ -144,8 +146,20 @@ src
 |    Header    | functional |   n   |   n   | _contains the nav bar_               |
 |    Nav       | functional |   n   |   n   | _has links to help navigate throughout the site_               |
 |    Footer    | functional |   n   |   n   | _will house info to my personal site, gitbut, etc_               |
-| MainButton   | functional |   n   |   n   | _main button to be used throughout the site_               |
-| SecondaryButton   | functional |   n   |   n   | _secondary button to be used throughout the site_               |
+| MainButton   | functional |   n   |   y   | _main button to be used throughout the site_               |
+| SecondaryButton   | functional |   n   |   y   | _secondary button to be used throughout the site_               |
+| UserLeagueList   | functional |   y   |   n   | _shows all the leagues a user has joined_               |
+| LoginSignupForm   | functional |   y   |   y   | _form to be used for both login and signup_               |
+| Leagues   | functional |   y   |   y   | _will contain the LeaguesRow - a list of all the open leagues that you can join _               |
+| LeaguesRow   | functional |   y   |   y   | _will have info about a single league_               |
+| LeagueInfo  | functional |   y   |   y   | _info container on league screen_               |
+| Leaderboard  | functional |   y   |   y   | _have the leaderboard for a single league_               |
+| LeaderboardRow  | functional |   y   |   y   | _will contain a single row for the leaderboard_               |
+| EditLeagueForm  | functional |   y   |   y   | _Form to edit a league_               |
+| MatchweekDropdown  | functional |   y   |   y   | _will contain a dropdown for users to select the matchweek they want to look at_               |
+| MatchweekForm  | functional |   y   |   y   | _will contain the form to make a selection for that matchweek_               |
+| Picks  | functional |   y   |   y   | _will contain the list of all the users picks_               |
+| PickRow  | functional |   y   |   y   | _will contain the row for a single user pick_               |
 
 #### Time Estimates
 
