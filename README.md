@@ -75,6 +75,14 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 
 ![picks and schedule screens](wireframe-desktop-4.png)
 
+- Tablet - changes 
+
+![tablet screen changes](wireframe-desktop-changes.png)
+
+- Mobile - changes 
+
+![mobile screen changes](wireframe-mobile-changes.png)
+
 
 #### Component Tree
 
