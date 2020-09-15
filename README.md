@@ -22,12 +22,12 @@
 
 ## Overview
 
-_**Premier League Survivor** is a game centered around the English Premier League. The user can create an account. After creating an account, the user can create and join leagues. Each league will have a seperate leaderboard and is designed to be like a fantasy football laegue. The rules of the game are the following: 
+_**Premier League Survivor** is a game centered around the English Premier League. The user can create an account. After creating an account, the user can create and join leagues. Each league will have a seperate leaderboard and is designed to be like a fantasy football laegue. The rules of the game are the following:_
 1. Select only 1 game each matchweek per league (there are 38)
 2. You can only select one team 2 times throughout a single Premier League season. 
 3. You can only select games that have not started.
 4. If a game that you have selected a winner from starts, you cannot change your pick.
-_
+
 
 
 <br>
