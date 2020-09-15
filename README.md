@@ -23,10 +23,11 @@
 ## Overview
 
 _**Premier League Survivor** is a game centered around the English Premier League. The user can create an account. After creating an account, the user can create and join leagues. Each league will have a seperate leaderboard and is designed to be like a fantasy football laegue. The rules of the game are the following:_
-1. Select only 1 game each matchweek per league (there are 38)
-2. You can only select one team 2 times throughout a single Premier League season. 
-3. You can only select games that have not started.
-4. If a game that you have selected a winner from starts, you cannot change your pick.
+1. _Select only 1 game each matchweek per league (there are 38)._
+2. _You can only select one team 2 times throughout a single Premier League season._
+3. _You can only select games that have not started._
+4. _If a game that you have selected a winner from starts, you cannot change your pick._
+5. _If you select a winner, you get 3 points. A tie is worth 1 point, and a loss is worth 0 points._
 
 
 
@@ -34,33 +35,28 @@ _**Premier League Survivor** is a game centered around the English Premier Leagu
 
 ## MVP
 
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
-
-_The **Project Title** MVP lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dapibus fermentum risus vitae bibendum. Integer vel ipsum mollis odio sollicitudin ornare eu vel ex. In quis fringilla velit, ac maximus quam. Etiam eget placerat neque. Aenean faucibus sem non nisi lobortis ullamcorper._
+_The **Premier League Survivor** MVP will allow users to create, join, and edit leagues. Within a league, users will compete with each other by selecting a winner each matchweek._
 
 <br>
 
 ### Goals
 
-- _Lorem ipsum, dolor sit amet,_
-- _consectetur adipiscing elit._
-- _Phasellus dapibus fermentum risus vitae bibendum._
-- _Integer vel ipsum mollis odio sollicitudin ornare eu vel ex._
-- _etc._
+- _Make gameplay possible_
+- _Give a leaderboard for each league_
+- _Make the game logic work with the schedule picker and the backend_
+- _Allow users to close and open leagues that they created_
 
 <br>
 
 ### Libraries and Dependencies
 
-> Use this section to list all supporting libraries and dependencies, and their role in the project. Below is an example - this needs to be replaced!
-
 |     Library      | Description                                |
 | :--------------: | :----------------------------------------- |
-|      React       | _Lorem ipsum dolor sit amet, consectetur._ |
-|   React Router   | _Lorem ipsum dolor sit amet, consectetur._ |
-| React SemanticUI | _Lorem ipsum dolor sit amet, consectetur._ |
-|     Express      | _Lorem ipsum dolor sit amet, consectetur._ |
-|  Express Router  | _Lorem ipsum dolor sit amet, consectetur._ |
+|      React       | __ |
+|   React Router   | __ |
+| React SemanticUI | __ |
+|     Express      | __ |
+|  Express Router  | __ |
 
 <br>
 
