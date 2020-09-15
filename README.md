@@ -85,12 +85,53 @@ Component Tree: https://whimsical.com/47YhdNh9RAvumqwcFegzaN
 ``` structure
 
 src
-|__ shared/
+|__ assets/
       |__ style.css
 |__ components/
-      |__ Header.jsx
+      |__ shared/
+          |__ Layout.jsx
+          |__ Header.jsx
+          |__ Footer.jsx
+          |__ Nav.jsx
+      |__ MainButton.jsx
+      |__ SecondaryButton.jsx
+      |__ UserLeagueList.jsx
+      |__ LoginSinupForm.jsx
+      |__ Leagues.jsx
+      |__ LeagueRow.jsx
+      |__ LeagueInfo.jsx
+      |__ Leaderboard.jsx
+      |__ LeaderboardRow.jsx
+      |__ EditLeagueForm.jsx
+      |__ CreateLeagueForm.jsx
+      |__ MatchweekDropdown.jsx
+      |__ MatchweekForm.jsx
+      |__ Picks.jsx
+      |__ PickRow.jsx
+|__ content/
+      |__ login.js
+      |__ home.js
+      |__ signUp.js
+      |__ allLeagues.js
+      |__ leagueDetail.js
+      |__ editLeague.js
+      |__ createLeague.js
+      |__ schedule.js
+      |__ picks.js
+|__ screens/
+      |__ Login.js
+      |__ Home.js
+      |__ SignUp.js
+      |__ AllLeagues.js
+      |__ LeagueDetail.js
+      |__ EditLeague.js
+      |__ CreateLeague.js
+      |__ Schedule.js
+      |__ Picks.js
 |__ services/
-
+      |__ auth.js
+      |__ leagues.js
+      |__ schedulePicks.js
 ```
 
 #### Component Breakdown
@@ -99,11 +140,12 @@ src
 
 |  Component   |    Type    | state | props | Description                                                      |
 | :----------: | :--------: | :---: | :---: | :--------------------------------------------------------------- |
-|    Header    | functional |   n   |   n   | _The header will contain the navigation and logo._               |
-|  Navigation  | functional |   n   |   n   | _The navigation will provide a link to each of the pages._       |
-|   Gallery    |   class    |   y   |   n   | _The gallery will render the posts using cards in flexbox._      |
-| Gallery Card | functional |   n   |   y   | _The cards will render the post info via props._                 |
-|    Footer    | functional |   n   |   n   | _The footer will show info about me and a link to my portfolio._ |
+|    Layout    | functional |   n   |   n   | _contains the header, nav, and footer_               |
+|    Header    | functional |   n   |   n   | _contains the nav bar_               |
+|    Nav       | functional |   n   |   n   | _has links to help navigate throughout the site_               |
+|    Footer    | functional |   n   |   n   | _will house info to my personal site, gitbut, etc_               |
+| MainButton   | functional |   n   |   n   | _main button to be used throughout the site_               |
+| SecondaryButton   | functional |   n   |   n   | _secondary button to be used throughout the site_               |
 
 #### Time Estimates
 
