@@ -184,7 +184,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model. You can use draw.io, Lucidchart or another ERD tool.
+![Entity Relionship Diagram](erd.png)
 
 <br>
 
@@ -192,7 +192,9 @@ src
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+1. Add more details to the home page (like best score, upcoming picks)
+2. Build a true survivor game. The rules change and you are lose the game when a selection loses or 3 selections tie.
+3. Views to see what teams have been picked each week and what picks a single user has made.
 
 ***
 
