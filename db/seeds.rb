@@ -8,8 +8,9 @@
 
 League.destroy_all
 User.destroy_all
-Team.destroy_all
 Match.destroy_all
+Team.destroy_all
+Pick.destroy_all
 
 admin = User.create!(username: 'admin', email: 'admin@email.com', password: '123456')
 
@@ -19,3 +20,5 @@ tottenham = Team.create!(name: 'Tottenham Hotspur')
 arsenal = Team.create!(name: 'Arsenal Gunners')
 
 match1 = Match.create!(home_team: tottenham, away_team: arsenal, home_goals: 54, away_goals: 0, result: 'home')
+
+pick1 = Pick.create!(user: admin, league: league, team: tottenham, match: match1)
