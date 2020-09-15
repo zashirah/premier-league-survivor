@@ -77,7 +77,7 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 
 - Tablet - changes 
 
-![tablet screen changes](wireframe-desktop-changes.png)
+![tablet screen changes](wireframe-tablet-changes.png)
 
 - Mobile - changes 
 
