@@ -64,48 +64,29 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 
 #### Wireframes
 
-> Use the Wireframes section to display desktop, tablet and mobile views. No hand-drawn wireframes. Use a tool like wireframe.cc, Whimsical or AdobeXD
+- Desktop - login, signup, and home screens
+![login, signup, and home screens](wireframe-desktop-1.png)
 
-![Dummy Link](url)
+- Desktop - all leagues, league detail, create league, and edit league screens
 
-- Desktop Landing
+![all leagues, league detail, create league, and edit league screens](wireframe-desktop-3.png)
 
-![Dummy Link](url)
+- Desktop - picks and schedules screens
 
-- Desktop Hero
+![picks and schedule screens](wireframe-desktop-4.png)
 
-![Dummy Link](url)
-
-- Resource Index
-
-![Dummy Link](url)
-
-- Resource Show
-
-![Dummy Link](url)
-
-- Tablet Resource Index
-
-![Dummy Link](url)
-
-- Mobile Resource Index
 
 #### Component Tree
 
-> Use this section to display the structure of how your React components are being rendered. This should show the parent to child relation between you components. In other words, show which components are rendering the other components. 
+Component Tree: https://whimsical.com/47YhdNh9RAvumqwcFegzaN
 
 #### Component Hierarchy
-
-> Use this section to define your React components and the data architecture of your app. This should be a reflection of how you expect your directory/file tree to look like. 
 
 ``` structure
 
 src
-|__ assets/
-      |__ fonts
-      |__ graphics
-      |__ images
-      |__ mockups
+|__ shared/
+      |__ style.css
 |__ components/
       |__ Header.jsx
 |__ services/
