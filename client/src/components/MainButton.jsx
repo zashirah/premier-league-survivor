@@ -11,8 +11,8 @@ const StyledButton = styled.button`
   box-shadow: 0px 1px 3px .5px var(--dark);
 `
 
-const MainButton = ({ buttonText }) => {
-  return <StyledButton>{buttonText}</StyledButton>
+const MainButton = ({ buttonText, onClick }) => {
+  return <StyledButton onClick={onClick}>{buttonText}</StyledButton>
 }
 
 export default MainButton

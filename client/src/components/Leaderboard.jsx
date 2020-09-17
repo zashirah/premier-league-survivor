@@ -29,7 +29,7 @@ const LeaderboardData = styled.td`
 const Leaderboard = ({ leagueUsers }) => {
   const LeaderboardJSX = leagueUsers.map((user, index) => (
     <LeaderboardRow key={user.id}>
-      <LeaderboardData key={user.id}>{index}</LeaderboardData>
+      <LeaderboardData key={user.id}>{index + 1}</LeaderboardData>
       <LeaderboardData key={user.id}>{user.username}</LeaderboardData>
       <LeaderboardData key={user.id}>{user.total_score}</LeaderboardData>
     </LeaderboardRow>

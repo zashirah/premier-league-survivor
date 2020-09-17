@@ -22,6 +22,7 @@ const LeagueContainer = ({ currentUser }) => {
   const handleDelete = async (id) => {
     await deleteLeague(id)
     setLeagues((prevState) => prevState.filter((league) => league.id !== id))
+    history.push(`/leagues`)
   }
 
   const handleCreate = async (formData) => {
