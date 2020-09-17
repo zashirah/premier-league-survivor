@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import MainButton from "../components/MainButton"
+import MainButton from "../../components/MainButton"
 
 const HomeContainer = styled.div`
   height: 100vh;
