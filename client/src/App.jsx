@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Layout from './shared/Layout';
+import Layout from './components/shared/Layout';
 import { Switch, Route, useHistory } from 'react-router-dom';
 
 import Login from './screens/Login'
