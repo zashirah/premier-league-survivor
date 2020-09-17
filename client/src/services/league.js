@@ -19,3 +19,8 @@ export const postLeague = async (formData) => {
   const response = await api.post("/leagues", {league: formData})
   return response.data
 }
+
+export const putLeague = async (id, formData) => {
+  const response = await api.put(`/leagues/${id}`, {league: formData})
+  return response.data
+}
