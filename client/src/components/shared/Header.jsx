@@ -61,7 +61,7 @@ const Header = () => {
           <Link to="/leagues">Leagues</Link>
         </NavItem>
         <NavItem>
-          <Link to="/scheduls">Schedule</Link>
+          <Link to="/schedules">Schedule</Link>
         </NavItem>
         <NavItem>
           <Link to="/picks">Picks</Link>
