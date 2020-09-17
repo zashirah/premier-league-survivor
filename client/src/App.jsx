@@ -5,7 +5,8 @@ import { Switch, Route, useHistory } from 'react-router-dom';
 import Login from './screens/Login'
 import { loginUser, registerUser, verifyUser, removeToken } from "./services/auth"
 import Register from './screens/Register';
-import UserContainer from './containers/UserContainer';
+import UserContainer from "./containers/UserContainer"
+import LeagueContainer from "./containers/LeagueContainer"
 
 function App() {
   const history = useHistory()
@@ -48,7 +49,9 @@ function App() {
         <Route path="/register">
           <Register registerSubmit={registerSubmit} />
         </Route>
-        <Route path="/leagues"></Route>
+        <Route path="/leagues">
+          <LeagueContainer currentUser={currentUser} />
+        </Route>
         {/* <Route path="/picks"></Route>
         <Route path="/schedule"></Route> */}
         <Route path="/">

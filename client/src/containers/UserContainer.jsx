@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Route, Switch, useHistory } from 'react-router-dom'
 
-import Home from "../screens/Home"
+import Home from "../screens/user/Home"
 import { getUser } from '../services/user'
 
 const UserContainer = ({ currentUser }) => {
