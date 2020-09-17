@@ -38,7 +38,7 @@ const LeagueCreateLabel = styled.label``
 const LeagueCreate = ({ currentUser, handleCreate }) => {
   const [formData, setFormData] = useState({
     name: "",
-    open_ind: false,
+    open_ind: null,
     user_id: currentUser.id
   })
 

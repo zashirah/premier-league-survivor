@@ -5,7 +5,7 @@ import LeagueCreate from "../screens/league/LeagueCreate"
 import LeagueEdit from "../screens/league/LeagueEdit"
 import Leagues from "../screens/league/Leagues"
 import League from "../screens/league/League"
-import { getAllLeagues, deleteLeague, postLeague } from "../services/league"
+import { getAllLeagues, deleteLeague, postLeague, putLeague } from "../services/league"
 
 const LeagueContainer = ({ currentUser }) => {
   const history = useHistory()
@@ -31,6 +31,14 @@ const LeagueContainer = ({ currentUser }) => {
     history.push(`/leagues/${newLeague.id}`)
   }
 
+  const handleEdit = async (id, formData) => {
+    const updatedLeague = await putLeague(id, formData)
+    setLeagues(prevState => (
+      prevState.map(league =>  league.id === Number(id) ? updatedLeague : league)
+    ))
+    history.push(`/leagues/${id}`)
+  }
+
   return (
     <Switch>
       <Route path="/leagues/create">
@@ -39,7 +47,11 @@ const LeagueContainer = ({ currentUser }) => {
         )}
       </Route>
       <Route path="/leagues/:id/edit">
-        <LeagueEdit currentUser={currentUser} leagues={leagues} />
+        <LeagueEdit
+          currentUser={currentUser}
+          leagues={leagues}
+          handleEdit={handleEdit}
+        />
       </Route>
       <Route path="/leagues/:id">
         <League currentUser={currentUser} handleDelete={handleDelete} />
