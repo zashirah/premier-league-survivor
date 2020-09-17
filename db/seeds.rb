@@ -15,7 +15,7 @@ Team.destroy_all
 admin = User.create!(username: 'admin', email: 'admin@email.com', password: '123456')
 user2 = User.create!(username: 'user2', email: 'user2@email.com', password: '123456')
 
-league = League.create!(name: 'test', open_ind: true, manager: admin)
+league = League.create!(name: 'test', status: 'open', manager: admin)
 
 league.users.push(admin, user2)
 
