@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
 
@@ -48,7 +48,7 @@ const NavItem = styled.li`
   }
 `
 
-const Header = () => {
+const Header = ({ currentUser, handleLogout }) => {
   return (
     <Nav>
       <NavLeft>
@@ -57,15 +57,22 @@ const Header = () => {
         </NavItem>
       </NavLeft>
       <NavRight>
-        <NavItem>
-          <Link to="/leagues">Leagues</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/schedules">Schedule</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/picks">Picks</Link>
-        </NavItem>
+        {currentUser && (
+          <>
+            <NavItem onClick={handleLogout}>
+              <Link>Logout</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/leagues">Leagues</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/schedules">Schedule</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/picks">Picks</Link>
+            </NavItem>
+          </>
+        )}
       </NavRight>
     </Nav>
   )
