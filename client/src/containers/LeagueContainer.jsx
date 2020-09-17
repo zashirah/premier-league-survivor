@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react"
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, useHistory } from "react-router-dom"
 
 import LeagueCreate from "../screens/league/LeagueCreate"
 import LeagueEdit from "../screens/league/LeagueEdit"
 import Leagues from "../screens/league/Leagues"
 import League from "../screens/league/League"
-import { getAllLeagues, deleteLeague } from "../services/league"
+import { getAllLeagues, deleteLeague, postLeague } from "../services/league"
 
 const LeagueContainer = ({ currentUser }) => {
+  const history = useHistory()
   const [leagues, setLeagues] = useState([])
 
   useEffect(() => {
@@ -23,16 +24,24 @@ const LeagueContainer = ({ currentUser }) => {
     setLeagues((prevState) => prevState.filter((league) => league.id !== id))
   }
 
+  const handleCreate = async (formData) => {
+    const newLeague = await postLeague(formData)
+    setLeagues(prevState => [...prevState, newLeague])
+    history.push(`/leagues/${newLeague.id}`)
+  }
+
   return (
     <Switch>
       <Route path="/leagues/create">
-        <LeagueCreate currentUser={currentUser} leagues={leagues} />
+        {currentUser && (
+          <LeagueCreate currentUser={currentUser} handleCreate={handleCreate} />
+        )}
       </Route>
       <Route path="/leagues/:id/edit">
         <LeagueEdit currentUser={currentUser} leagues={leagues} />
       </Route>
       <Route path="/leagues/:id">
-        <League currentUser={currentUser} handleDelete={handleDelete}/>
+        <League currentUser={currentUser} handleDelete={handleDelete} />
       </Route>
       <Route path="/leagues">
         <Leagues currentUser={currentUser} leagues={leagues} />

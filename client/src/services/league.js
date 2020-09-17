@@ -14,3 +14,8 @@ export const deleteLeague = async (id) => {
   const response = await api.delete(`/leagues/${id}`)
   return response.data
 }
+
+export const postLeague = async (formData) => {
+  const response = await api.post("/leagues", {league: formData})
+  return response.data
+}
