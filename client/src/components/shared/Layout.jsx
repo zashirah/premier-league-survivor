@@ -6,10 +6,10 @@ const LayoutContainer = styled.div`
   margin-top: 0px;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, currentUser, handleLogout }) => {
   return (
     <>
-      <Header />
+      <Header currentUser={currentUser} handleLogout={handleLogout} />
       <LayoutContainer>
         <main>{children}</main>
       </LayoutContainer>
