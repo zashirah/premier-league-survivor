@@ -8,4 +8,18 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }
 
   has_many :picks
+
+  def total_score
+    points = 0
+    picks.each do |pick|
+      if pick.team == pick.match.home_team && pick.match.home_goals > pick.match.away_goals
+        points += 3
+      elsif pick.team == pick.match.away_team && pick.match.home_goals < pick.match.away_goals
+        points += 3
+      elsif pick.match.away_goals == pick.match.home_goals
+        points += 1
+      end
+    end
+    points
+  end
 end

@@ -41,3 +41,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # The gem that allows us to format our JSON without having to lift a finger on the front end
 gem 'active_model_serializers'
+
+gem 'smarter_csv', '~> 1.2', '>= 1.2.6'
