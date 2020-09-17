@@ -1,3 +1,12 @@
+:root {
+  --primary: #FE4A49;
+  --secondary: #FED766;
+  --primary-button:  #009FB7;
+  --secondary-button:  #E6E6EA;
+  --light: #F4F4F8;
+  --dark: #1C1C21;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +20,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
