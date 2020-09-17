@@ -34,8 +34,6 @@ const StyledLink = styled(Link)`
 
 
 const Leagues = ({ leagues, currentUser }) => {
-  console.log(leagues)
-
   const LeaguesJSX = leagues.map((league) => (
     <LeagueRow key={league.id}>
       <LeagueRowP>Name: {league.name}</LeagueRowP>

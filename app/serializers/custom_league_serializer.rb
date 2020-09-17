@@ -1,5 +1,5 @@
 class CustomLeagueSerializer < ActiveModel::Serializer
-  attributes :id, :manager_id, :name, :open_ind, :users
+  attributes :id, :manager_id, :name, :status, :users
 
   def manager_id
     object.manager.id

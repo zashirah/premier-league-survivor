@@ -36,15 +36,19 @@ const LeagueEditInput = styled.input``
 
 const LeagueEditLabel = styled.label``
 
+const LeagueEditSelect = styled.select``
+
+const LeagueEditOption = styled.option``
+
 const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
   const { id } = useParams()
   const [formData, setFormData] = useState({
     name: "",
-    open_ind: null,
+    status: "",
     user_id: "",
   })
 
-  const { name, open_ind } = formData
+  const { name, status } = formData
 
   useEffect(() => {
     const prefillForm = () => {
@@ -62,12 +66,13 @@ const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
     }))
   }
 
-  const handleCheckboxClick = () => {
-    setFormData((prevState) => ({
-      ...prevState,
-      open_ind: !prevState.open_ind,
-    }))
-  }
+  // const handleCheckboxClick = () => {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     open_ind: !prevState.open_ind,
+  //   }))
+  // }
+
   return (
     <LeagueEditContainer>
       <LeagueEditForm
@@ -88,14 +93,27 @@ const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
           />
         </LeagueEditRow>
         <LeagueEditRow>
-          <LeagueEditLabel htmlFor="open_ind">Open:</LeagueEditLabel>
+          {/* <LeagueEditLabel htmlFor="open_ind">Open:</LeagueEditLabel>
           <LeagueEditInput
             name="open_ind"
             id="open_ind"
             type="checkbox"
             value={open_ind}
             onClick={handleCheckboxClick}
-          />
+          /> */}
+
+          <LeagueEditLabel htmlFor="status">Status:</LeagueEditLabel>
+          <LeagueEditSelect
+            name="status"
+            onChange={handleChange}
+            value={status}
+          >
+            {/* <LeagueEditOption disabled selected value={""}>
+              Select the Status
+            </LeagueEditOption> */}
+            <LeagueEditOption value={"open"}>Open</LeagueEditOption>
+            <LeagueEditOption value={"closed"}>Closed</LeagueEditOption>
+          </LeagueEditSelect>
         </LeagueEditRow>
         <MainButton buttonText="Submit" />
       </LeagueEditForm>

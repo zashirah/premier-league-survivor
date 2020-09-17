@@ -35,14 +35,19 @@ const LeagueCreateInput = styled.input``
 
 const LeagueCreateLabel = styled.label``
 
+const LeagueCreateSelect = styled.select``
+
+const LeagueCreateOption = styled.option``
+
+
 const LeagueCreate = ({ currentUser, handleCreate }) => {
   const [formData, setFormData] = useState({
     name: "",
-    open_ind: null,
+    status: "",
     user_id: currentUser.id
   })
 
-  const { name, open_ind } = formData
+  const { name, status } = formData
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -52,12 +57,12 @@ const LeagueCreate = ({ currentUser, handleCreate }) => {
     }))
   }
 
-  const handleCheckboxClick = () => {
-    setFormData((prevState) => ({
-      ...prevState,
-      open_ind: !prevState.open_ind,
-    }))
-  }
+  // const handleCheckboxClick = () => {
+  //   setFormData((prevState) => ({
+  //     ...prevState,
+  //     open_ind: !prevState.open_ind,
+  //   }))
+  // }
 
   return (
     <LeagueCreateContainer>
@@ -79,14 +84,25 @@ const LeagueCreate = ({ currentUser, handleCreate }) => {
           />
         </LeagueCreateRow>
         <LeagueCreateRow>
-          <LeagueCreateLabel htmlFor="open_ind">Open:</LeagueCreateLabel>
-          <LeagueCreateInput
-            name="open_ind"
-            id="open_ind"
-            type="checkbox"
+          <LeagueCreateLabel htmlFor="status">Status:</LeagueCreateLabel>
+          {/* <LeagueCreateInput
+            name="status"
+            id="status"
+            type="text"
             value={open_ind}
-            onClick={handleCheckboxClick}
-          />
+            onClick={handleChange}
+          /> */}
+          <LeagueCreateSelect onChange={handleChange} name="status">
+            <LeagueCreateOption disabled selected>
+              Select the Status
+            </LeagueCreateOption>
+            <LeagueCreateOption value={"open"}>
+              Open
+            </LeagueCreateOption>
+            <LeagueCreateOption value={"closed"}>
+              Closed
+            </LeagueCreateOption>
+          </LeagueCreateSelect>
         </LeagueCreateRow>
         <MainButton buttonText="Submit" />
       </LeagueCreateForm>
