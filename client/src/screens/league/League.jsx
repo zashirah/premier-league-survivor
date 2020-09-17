@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const League = ({ currentUser }) => {
+const League = ({ currentUser, handleDelete }) => {
   const [league, setLeague] = useState(null)
   const { id } = useParams()
 
@@ -69,7 +69,10 @@ const League = ({ currentUser }) => {
                 <StyledLink to={`/leagues/${league.id}/edit`}>
                   <MainButton buttonText="Edit" />
                 </StyledLink>
-                <MainButton buttonText="Delete" />
+                <MainButton
+                  buttonText="Delete"
+                  onClick={() => handleDelete(league.id)}
+                />
               </AdminButtons>
             )}
           </LeftSide>
