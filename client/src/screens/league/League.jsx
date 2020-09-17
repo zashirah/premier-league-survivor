@@ -1,7 +1,86 @@
-import React from 'react'
+import React, { useState, useEffect } from "react"
+import { useParams, Link } from "react-router-dom"
+import styled from "styled-components"
 
-const League = ({ leagues, currentUser }) => {
-  return <div>league</div>
+import { getLeague } from "../../services/league"
+import MainButton from "../../components/MainButton"
+import Leaderboard from "../../components/Leaderboard"
+
+const LeagueContainer = styled.div`
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100vw;
+  height: 100%;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+`
+
+const LeagueSection = styled.div`
+  box-sizing: border-box;
+  width: 50%;
+  height: 100%;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 25px;
+  box-shadow: 0px 1px 5px 1px var(--dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const LeftSide = styled(LeagueSection)``
+
+const SectionTitle = styled.h3`
+  color: var(--dark);
+`
+
+const AdminButtons = styled.div``
+
+const RightSide = styled(LeagueSection)``
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+
+const League = ({ currentUser }) => {
+  const [league, setLeague] = useState(null)
+  const { id } = useParams()
+
+  useEffect(() => {
+    const fetchLeague = async () => {
+      const league = await getLeague(id)
+      console.log(league)
+      setLeague(league)
+    }
+    fetchLeague()
+  }, [])
+
+  return (
+    <>
+      {league && (
+        <LeagueContainer>
+          <LeftSide>
+            <SectionTitle>{league.name}</SectionTitle>
+            <MainButton buttonText="Selections" />
+            {currentUser && currentUser.id === league.manager_id && (
+              <AdminButtons>
+                <StyledLink to={`/leagues/${league.id}/edit`}>
+                  <MainButton buttonText="Edit" />
+                </StyledLink>
+                <MainButton buttonText="Delete" />
+              </AdminButtons>
+            )}
+          </LeftSide>
+          <RightSide>
+            <SectionTitle>Leaderboard</SectionTitle>
+            <Leaderboard leagueUsers={league.users} />
+          </RightSide>
+        </LeagueContainer>
+      )}
+    </>
+  )
 }
 
 export default League
