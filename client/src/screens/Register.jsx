@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+
 import MainButton from "../components/MainButton"
 
 const FormContainer = styled.div`
@@ -41,13 +42,14 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Login = ({ loginSubmit }) => {
+const Register = ({ registerSubmit }) => {
   const [formData, setFormData] = useState({
     username: "",
+    email: "",
     password: "",
   })
 
-  const { username, password } = formData
+  const { username, email, password } = formData
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -57,13 +59,12 @@ const Login = ({ loginSubmit }) => {
       [name]: value,
     }))
   }
-
   return (
     <FormContainer>
       <StyledForm
         onSubmit={(e) => {
           e.preventDefault()
-          loginSubmit(formData)
+          registerSubmit(formData)
         }}
       >
         <FormTitle>Login:</FormTitle>
@@ -78,6 +79,16 @@ const Login = ({ loginSubmit }) => {
           ></FormRowInput>
         </FormRow>
         <FormRow>
+          <FormRowLabel htmlForm="email">Email:</FormRowLabel>
+          <FormRowInput
+            type="text"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          ></FormRowInput>
+        </FormRow>
+        <FormRow>
           <FormRowLabel htmlForm="password">Password:</FormRowLabel>
           <FormRowInput
             type="text"
@@ -88,14 +99,14 @@ const Login = ({ loginSubmit }) => {
           ></FormRowInput>
         </FormRow>
         <FormRow>
-          <MainButton buttonText="Login" />
-          <StyledLink to='/register'>
-            <MainButton buttonText="Register" />
+          <StyledLink to="/login">
+            <MainButton buttonText="Back" />
           </StyledLink>
+          <MainButton buttonText="Register" />
         </FormRow>
       </StyledForm>
     </FormContainer>
   )
 }
 
-export default Login
+export default Register
