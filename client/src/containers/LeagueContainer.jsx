@@ -5,7 +5,7 @@ import LeagueCreate from "../screens/league/LeagueCreate"
 import LeagueEdit from "../screens/league/LeagueEdit"
 import Leagues from "../screens/league/Leagues"
 import League from "../screens/league/League"
-import { getAllLeagues } from "../services/league"
+import { getAllLeagues, deleteLeague } from "../services/league"
 
 const LeagueContainer = ({ currentUser }) => {
   const [leagues, setLeagues] = useState([])
@@ -18,6 +18,11 @@ const LeagueContainer = ({ currentUser }) => {
     fetchLeagues()
   }, [])
 
+  const handleDelete = async (id) => {
+    await deleteLeague(id)
+    setLeagues((prevState) => prevState.filter((league) => league.id !== id))
+  }
+
   return (
     <Switch>
       <Route path="/leagues/create">
@@ -27,7 +32,7 @@ const LeagueContainer = ({ currentUser }) => {
         <LeagueEdit currentUser={currentUser} leagues={leagues} />
       </Route>
       <Route path="/leagues/:id">
-        <League currentUser={currentUser} leagues={leagues} />
+        <League currentUser={currentUser} handleDelete={handleDelete}/>
       </Route>
       <Route path="/leagues">
         <Leagues currentUser={currentUser} leagues={leagues} />
