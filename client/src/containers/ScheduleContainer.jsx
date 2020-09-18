@@ -6,7 +6,7 @@ import UserLeagueSchedule from "../screens/schedule/UserLeagueSchedule"
 import { getAllMatches } from '../services/schedule'
 
 
-const ScheduleContainer = () => {
+const ScheduleContainer = ({ currentUser }) => {
   const [schedule, setSchedule] = useState([])
 
   useEffect(() => {
@@ -17,10 +17,11 @@ const ScheduleContainer = () => {
     fetchSchedule()
   }, [])
 
+
   return (
     <Switch>
       <Route path="/schedule/users/:user_id/leagues/:id">
-        <UserLeagueSchedule></UserLeagueSchedule>
+        <UserLeagueSchedule currentUser={currentUser}></UserLeagueSchedule>
       </Route>
       <Route path="/schedule">
         <Schedule schedule={schedule}></Schedule>
