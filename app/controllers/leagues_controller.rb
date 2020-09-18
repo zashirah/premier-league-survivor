@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   before_action :set_league, only: [:show, :update, :destroy]
-  before_action :authorize_request
+  # before_action :authorize_request
 
   # GET /leagues
   def index
@@ -11,7 +11,7 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/1
   def show
-    render json: @league
+    render json: @league, serializer: CustomLeagueSerializer
   end
 
   # POST /leagues
@@ -47,6 +47,6 @@ class LeaguesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def league_params
-      params.require(:league).permit(:name, :open_ind, :user_id)
+      params.require(:league).permit(:name, :status, :user_id)
     end
 end

@@ -14,15 +14,15 @@ class MatchesController < ApplicationController
   end
 
   # POST /matches
-  def create
-    @match = Match.new(match_params)
+  # def create
+  #   @match = Match.new(match_params)
 
-    if @match.save
-      render json: @match, status: :created, location: @match
-    else
-      render json: @match.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @match.save
+  #     render json: @match, status: :created, location: @match
+  #   else
+  #     render json: @match.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /matches/1
   def update
@@ -33,10 +33,36 @@ class MatchesController < ApplicationController
     end
   end
 
-  # DELETE /matches/1
-  def destroy
-    @match.destroy
+  def user_league_schedule
+    @league = League.find(params[:id])
+
+    @matches = Match.all
+
+    @new_matches = @matches.map do |match|
+      {
+        **match.attributes,
+        **match.allowed?(45, @league.id),
+        **match.team_names
+      }
+    end
+
+    render json: @new_matches
   end
+
+  # @matches.each do |match|
+  #   @picks.each do |pick|
+  #     if pick.match_id == match.id
+  #       p 'match'
+  #     else
+  #       p 'no match'
+  #     end
+  #   end
+  # end
+
+  # DELETE /matches/1
+  # def destroy
+  #   @match.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
