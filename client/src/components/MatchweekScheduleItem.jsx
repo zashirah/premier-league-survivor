@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
 
 const MatchRow = styled.div`
   display: flex;
@@ -12,7 +12,8 @@ const MatchRowItem = styled.p`
   font-weight: ${(props) => (props.bold ? "900" : "300")};
 `
 
-const MatchweekScheduleItem = ({ item }) => {
+const MatchweekScheduleItem = ({ item, league }) => {
+  console.log(league)
   return (
     <MatchRow key={item.id}>
       <MatchRowItem>Match Time: {item.match_datetime}</MatchRowItem>
@@ -36,6 +37,19 @@ const MatchweekScheduleItem = ({ item }) => {
       >
         Goals: {item.away_goals}
       </MatchRowItem>
+      {league && (
+        <>
+          <MatchRowItem>
+            Can Select Home?{item.home_allowed ? "Yes" : "No"}
+          </MatchRowItem>
+          <MatchRowItem>
+            Can Select Away?{item.away_allowed ? "Yes" : "No"}
+          </MatchRowItem>
+          <MatchRowItem>
+            Can Select Matchweek?{item.matchweek_allowed ? "Yes" : "No"}
+          </MatchRowItem>
+        </>
+      )}
     </MatchRow>
   )
 }

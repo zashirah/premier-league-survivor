@@ -36,7 +36,7 @@ const UserLeagueSchedule = () => {
 
   const ScheduleJSX = userLeagueSchedule
     .filter((item) => item.matchweek === week)
-    .map((item) => <MatchweekScheduleItem item={item} />)
+    .map((item) => <MatchweekScheduleItem item={item} league="league"/>)
 
   return (
     <ScheduleContainer>

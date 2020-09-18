@@ -19,11 +19,11 @@ const ScheduleContainer = () => {
 
   return (
     <Switch>
+      <Route path="/schedule/users/:user_id/leagues/:id">
+        <UserLeagueSchedule></UserLeagueSchedule>
+      </Route>
       <Route path="/schedule">
         <Schedule schedule={schedule}></Schedule>
-      </Route>
-      <Route path="/schedule/users/:user_id/leagues/:id">
-        <UserLeagueSchedule setSchedule={setSchedule}></UserLeagueSchedule>
       </Route>
     </Switch>
   )

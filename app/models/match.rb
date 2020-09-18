@@ -25,41 +25,17 @@ class Match < ApplicationRecord
       end
     end
 
-    return {
+    {
       home_allowed: @home_counter < 2,
       away_allowed: @away_counter < 2,
       matchweek_allowed: @matchweek_counter < 1
     }
+  end
 
-    # @matchweek_array = []
-    # @team_array = []
-
-    # @picks.each do |pick|
-    #   @matchweek_array << pick.match.matchweek
-    #   if pick.match.home_team == pick.team
-    #     @team_array << pick.match.home_team
-    #   else
-    #     @team_array << pick.match.away_team
-    #   end
-    # end
-
-    # @matches = Match.all
-
-    # @match_allowplay_array = []
-    # @hometeam_allowplay_array = []
-
-    # all.each do |match|
-    #   if @matchweek_array.include?(match.matchweek)
-    #     @match_allowplay_array << 'unavailable'
-    #   end
-      
-    #   if @team_array.select { |team| team == match.home_team }.length > 1
-    #     @hometeam_allowplay_array << 'home team unavailable'
-    #   end
-    #   if @team_array.select { |team| team == match.away_team }.length > 1
-    #     @awayteam_allowplay_array << 'away team unavailable'
-    #   end
-    # end
-
+  def team_names
+    {
+      home_team: home_team.name,
+      away_team: away_team.name
+    }
   end
 end

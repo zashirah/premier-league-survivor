@@ -41,7 +41,8 @@ class MatchesController < ApplicationController
     @new_matches = @matches.map do |match|
       {
         **match.attributes,
-        **match.allowed?(45, @league.id)
+        **match.allowed?(45, @league.id),
+        **match.team_names
       }
     end
 
