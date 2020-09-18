@@ -66,7 +66,7 @@ const Header = ({ currentUser, handleLogout }) => {
               <Link to="/leagues">Leagues</Link>
             </NavItem>
             <NavItem>
-              <Link to="/schedules">Schedule</Link>
+              <Link to="/schedule">Schedule</Link>
             </NavItem>
             <NavItem>
               <Link to="/picks">Picks</Link>
