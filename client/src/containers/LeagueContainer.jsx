@@ -42,7 +42,7 @@ const LeagueContainer = ({ currentUser }) => {
   const handleJoinLeague = async (userId, leagueId) => {
     const newUserLeague = await putUserLeague(userId, leagueId)
     setLeagues(newUserLeague)
-    history.push(`/leagues/${leagueId}`)
+    history.push(`/schedule/users/${userId}/leagues/${leagueId}`)
   }
 
   return (
