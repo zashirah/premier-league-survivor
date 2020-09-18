@@ -66,13 +66,6 @@ const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
     }))
   }
 
-  // const handleCheckboxClick = () => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     open_ind: !prevState.open_ind,
-  //   }))
-  // }
-
   return (
     <LeagueEditContainer>
       <LeagueEditForm
@@ -93,14 +86,6 @@ const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
           />
         </LeagueEditRow>
         <LeagueEditRow>
-          {/* <LeagueEditLabel htmlFor="open_ind">Open:</LeagueEditLabel>
-          <LeagueEditInput
-            name="open_ind"
-            id="open_ind"
-            type="checkbox"
-            value={open_ind}
-            onClick={handleCheckboxClick}
-          /> */}
 
           <LeagueEditLabel htmlFor="status">Status:</LeagueEditLabel>
           <LeagueEditSelect
@@ -108,9 +93,6 @@ const LeagueEdit = ({ leagues, currentUser, handleEdit }) => {
             onChange={handleChange}
             value={status}
           >
-            {/* <LeagueEditOption disabled selected value={""}>
-              Select the Status
-            </LeagueEditOption> */}
             <LeagueEditOption value={"open"}>Open</LeagueEditOption>
             <LeagueEditOption value={"closed"}>Closed</LeagueEditOption>
           </LeagueEditSelect>

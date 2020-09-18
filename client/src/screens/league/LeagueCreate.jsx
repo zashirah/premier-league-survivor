@@ -57,13 +57,6 @@ const LeagueCreate = ({ currentUser, handleCreate }) => {
     }))
   }
 
-  // const handleCheckboxClick = () => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     open_ind: !prevState.open_ind,
-  //   }))
-  // }
-
   return (
     <LeagueCreateContainer>
       <LeagueCreateForm

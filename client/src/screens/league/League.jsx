@@ -35,6 +35,9 @@ const LeftSide = styled(LeagueSection)``
 const SectionTitle = styled.h3`
   color: var(--dark);
 `
+const SectionStatus = styled.h5`
+  color: var(--dark);
+`
 
 const AdminButtons = styled.div``
 
@@ -62,7 +65,14 @@ const League = ({ currentUser, handleDelete }) => {
       {league && (
         <LeagueContainer>
           <LeftSide>
-            <SectionTitle>{league.name}</SectionTitle>
+            <SectionTitle>League Name: {league.name}</SectionTitle>
+            <SectionStatus>Status: {league.status}</SectionStatus>
+            {currentUser
+              && !league.users.find(user => user.id === currentUser.id)
+              && league.status === 'open'
+              && (
+              <MainButton buttonText="Join"/>
+            )}
             <MainButton buttonText="Selections" />
             {currentUser && currentUser.id === league.manager_id && (
               <AdminButtons>
