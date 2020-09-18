@@ -1,5 +1,5 @@
 class PickSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :user_id, :league_id, :team_id, :match_id
   
   has_one :user
   has_one :league

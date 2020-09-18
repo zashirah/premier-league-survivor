@@ -40,13 +40,13 @@ leicester = Team.create!(name: 'Leicester City')
 villa = Team.create!(name: 'Aston Villa')
 wolves = Team.create!(name: 'Wolverhampton')
 
-# match1 = Match.create!(
-#   home_team: tottenham,
-#   away_team: arsenal,
-#   home_goals: 54,
-#   away_goals: 0,
-#   match_datetime: DateTime.civil(2020, 9, 1, 12, 0, 0, 0)
-# )
+match1 = Match.create!(
+  home_team: spurs,
+  away_team: arsenal,
+  home_goals: 54,
+  away_goals: 0,
+  match_datetime: DateTime.civil(2020, 9, 1, 12, 0, 0, 0)
+)
 
 MATCH_DATA = [
   {
@@ -3095,4 +3095,4 @@ MATCH_DATA.each do |value|
   Match.create!(value)
 end
 
-# pick1 = Pick.create!(user: admin, league: league, team: tottenham, match: match1)
+pick1 = Pick.create!(user: admin, league: league, team: spurs, match: match1)
