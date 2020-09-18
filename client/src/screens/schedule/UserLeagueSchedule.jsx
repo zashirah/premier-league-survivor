@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import styled from "styled-components"
 import MatchweekScheduleItem from "../../components/MatchweekScheduleItem"
 import ScheduleDropdown from "../../components/ScheduleDropdown"
 import { getUserLeagueMatches } from "../../services/schedule"
+import { putUserLeagueSelection } from "../../services/league"
 
 const ScheduleContainer = styled.div`
   padding-top: 100px;
@@ -13,7 +14,8 @@ const ScheduleContainer = styled.div`
   align-items: center;
 `
 
-const UserLeagueSchedule = () => {
+const UserLeagueSchedule = ({ currentUser }) => {
+  const history = useHistory()
   const { user_id, id } = useParams()
   const [userLeagueSchedule, setUserLeagueSchedule] = useState([])
   const [week, setWeek] = useState(1)
@@ -34,9 +36,27 @@ const UserLeagueSchedule = () => {
     setThisWeekSchedule(thisWeek)
   }, [userLeagueSchedule, week])
 
+  const handleSelection = async (user_id, league_id, match_id, team_id) => {
+    const newSelection = await putUserLeagueSelection(
+      user_id,
+      league_id,
+      match_id,
+      team_id
+    )
+    // setUserLeagueSchedule(newSelection)
+    history.push(`/leagues/${league_id}`)
+  }
+
   const ScheduleJSX = userLeagueSchedule
     .filter((item) => item.matchweek === week)
-    .map((item) => <MatchweekScheduleItem item={item} league="league"/>)
+    .map((item) => (
+      <MatchweekScheduleItem
+        item={item}
+        league="league"
+        handleSelection={handleSelection}
+        currentUser={currentUser}
+      />
+    ))
 
   return (
     <ScheduleContainer>

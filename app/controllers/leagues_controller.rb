@@ -48,6 +48,16 @@ class LeaguesController < ApplicationController
     render json: @league
   end
 
+  def add_pick
+    @pick = Pick.new(pick_params)
+
+    if @pick.save
+      render json: @pick, status: :created, location: @pick
+    else
+      render json: @pick.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_league
@@ -57,5 +67,9 @@ class LeaguesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def league_params
       params.require(:league).permit(:name, :status, :user_id)
+    end
+
+    def pick_params
+      params.require(:pick).permit(:user_id, :league_id, :match_id, :team_id)
     end
 end

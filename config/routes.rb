@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get '/users/:user_id/leagues/:id/schedule', to: 'matches#user_league_schedule'
 
   post '/users/:user_id/leagues/:id', to: 'leagues#add_user_to_league'
+
+  post '/users/:user_id/leagues/:league_id/matches/:match_id/teams/:team_id', to: 'leagues#add_pick'
 end

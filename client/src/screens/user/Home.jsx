@@ -35,11 +35,10 @@ const Home = ({ currentUser, userLeagues }) => {
       <StyledLink to="/leagues/create">
         <MainButton buttonText="Create League" />
       </StyledLink>
+      Your Leagues:
       {userLeagues &&
         userLeagues.map((league) => (
           <LeagueList>
-            {" "}
-            Your Leagues:
             <StyledLink to={`leagues/${league.id}`}>
               <LeagueListItem>{league.name}</LeagueListItem>
             </StyledLink>
