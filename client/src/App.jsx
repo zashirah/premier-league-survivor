@@ -7,6 +7,7 @@ import { loginUser, registerUser, verifyUser, removeToken } from "./services/aut
 import Register from './screens/Register';
 import UserContainer from "./containers/UserContainer"
 import LeagueContainer from "./containers/LeagueContainer"
+import ScheduleContainer from "./containers/ScheduleContainer"
 
 function App() {
   const history = useHistory()
@@ -52,8 +53,10 @@ function App() {
         <Route path="/leagues">
           <LeagueContainer currentUser={currentUser} />
         </Route>
-        {/* <Route path="/picks"></Route>
-        <Route path="/schedule"></Route> */}
+        {/* <Route path="/picks"></Route> */}
+        <Route path="/schedule">
+          <ScheduleContainer />
+        </Route>
         <Route path="/">
           <UserContainer currentUser={currentUser} />
         </Route>

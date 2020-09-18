@@ -24,7 +24,6 @@ const UserContainer = ({ currentUser }) => {
         <Home currentUser={currentUser} userLeagues={userData.leagues} />
       </Route>
       <Route path="/picks"></Route>
-      <Route path="/schedule"></Route>
     </Switch>
   )
 }
