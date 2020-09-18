@@ -7,7 +7,7 @@ class CustomLeagueSerializer < ActiveModel::Serializer
 
   def users
     object.users.map do |user|
-      { username: user.username, total_score: user.total_score }
+      { id:user.id, username: user.username, total_score: user.total_score }
     end
   end
 
