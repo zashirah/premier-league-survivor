@@ -3,11 +3,11 @@ class MatchSerializer < ActiveModel::Serializer
 
   # has_one :home_team
 
-  def home_team 
+  def home_team
     object.home_team.name
   end
 
-  def away_team 
+  def away_team
     object.away_team.name
   end
 end

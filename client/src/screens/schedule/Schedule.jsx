@@ -18,6 +18,7 @@ const MatchRow = styled.div`
 
 const MatchRowItem = styled.p`
   padding: 5px;
+  font-weight: ${(props) => (props.bold ? "900" : "300")};
 `
 
 
@@ -37,10 +38,30 @@ const Schedule = ({ schedule }) => {
     .map((item) => (
       <MatchRow key={item.id}>
         <MatchRowItem>Match Time: {item.match_datetime}</MatchRowItem>
-        <MatchRowItem>Home: {item.home_team_id}</MatchRowItem>
-        <MatchRowItem>Goals: {item.home_goals}</MatchRowItem>
-        <MatchRowItem>Away: {item.away_team_id}</MatchRowItem>
-        <MatchRowItem>Goals: {item.away_goals}</MatchRowItem>
+        <MatchRowItem
+          bold={
+            Number(item.home_goals) > Number(item.away_goals) && true
+          }
+        >
+          Home: {item.home_team}
+        </MatchRowItem>
+        <MatchRowItem
+          bold={Number(item.home_goals) > Number(item.away_goals) && true}
+        >
+          Goals: {item.home_goals}
+        </MatchRowItem>
+        <MatchRowItem
+          bold={
+            Number(item.home_goals) < Number(item.away_goals) && true
+          }
+        >
+          Away: {item.away_team}
+        </MatchRowItem>
+        <MatchRowItem
+          bold={Number(item.home_goals) < Number(item.away_goals) && true}
+        >
+          Goals: {item.away_goals}
+        </MatchRowItem>
       </MatchRow>
     ))
 
