@@ -57,22 +57,28 @@ const Header = ({ currentUser, handleLogout }) => {
         </NavItem>
       </NavLeft>
       <NavRight>
-        {currentUser && (
+        {currentUser ? (
           <>
             <NavItem onClick={handleLogout}>
               <Link>Logout</Link>
             </NavItem>
-            <NavItem>
-              <Link to="/leagues">Leagues</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/schedule">Schedule</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/picks">Picks</Link>
+          </>
+        ) : (
+          <>
+            <NavItem onClick={handleLogout}>
+              <Link to="/login">Login</Link>
             </NavItem>
           </>
         )}
+        <NavItem>
+          <Link to="/leagues">Leagues</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/schedule">Schedule</Link>
+        </NavItem>
+        <NavItem>
+          <Link to="/picks">Picks</Link>
+        </NavItem>
       </NavRight>
     </Nav>
   )
