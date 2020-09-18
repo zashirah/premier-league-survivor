@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import Schedule from '../screens/schedule/Schedule'
+import UserLeagueSchedule from "../screens/schedule/UserLeagueSchedule"
 import { getAllMatches } from '../services/schedule'
 
 
@@ -11,7 +12,6 @@ const ScheduleContainer = () => {
   useEffect(() => {
     const fetchSchedule = async () => {
       const schedule = await getAllMatches()
-      console.log(schedule)
       setSchedule(schedule)
     }
     fetchSchedule()
@@ -21,6 +21,9 @@ const ScheduleContainer = () => {
     <Switch>
       <Route path="/schedule">
         <Schedule schedule={schedule}></Schedule>
+      </Route>
+      <Route path="/schedule/users/:user_id/leagues/:id">
+        <UserLeagueSchedule setSchedule={setSchedule}></UserLeagueSchedule>
       </Route>
     </Switch>
   )

@@ -13,7 +13,6 @@ const ScheduleDropdown = ({ setWeek }) => {
   }
 
   const ScheduleOptionsJSX = matchdayArray.map((matchdayItem) => {
-    console.log(matchdayItem)
 
     return (
       <ScheduleOption

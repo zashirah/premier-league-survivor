@@ -27,8 +27,6 @@ const LeagueListItem = styled.li`
 `
 
 const Home = ({ currentUser, userLeagues }) => {
-  console.log(userLeagues) 
-
   return (
     <HomeContainer>
       <StyledLink to="/leagues">
@@ -39,7 +37,6 @@ const Home = ({ currentUser, userLeagues }) => {
       </StyledLink>
       {userLeagues &&
         userLeagues.map((league) => (
-          // console.log(league.name)
           <LeagueList>
             {" "}
             Your Leagues:
