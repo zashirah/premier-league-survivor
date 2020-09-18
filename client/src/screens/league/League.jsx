@@ -54,7 +54,6 @@ const League = ({ currentUser, handleDelete }) => {
   useEffect(() => {
     const fetchLeague = async () => {
       const league = await getLeague(id)
-      console.log(league)
       setLeague(league)
     }
     fetchLeague()

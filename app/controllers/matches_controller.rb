@@ -33,6 +33,32 @@ class MatchesController < ApplicationController
     end
   end
 
+  def user_league_schedule
+    @league = League.find(params[:id])
+
+    @matches = Match.all
+
+    @new_matches = @matches.map do |match|
+      {
+        **match.attributes,
+        **match.allowed?(45, @league.id),
+        **match.team_names
+      }
+    end
+
+    render json: @new_matches
+  end
+
+  # @matches.each do |match|
+  #   @picks.each do |pick|
+  #     if pick.match_id == match.id
+  #       p 'match'
+  #     else
+  #       p 'no match'
+  #     end
+  #   end
+  # end
+
   # DELETE /matches/1
   # def destroy
   #   @match.destroy

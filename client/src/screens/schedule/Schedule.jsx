@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import MatchweekScheduleItem from '../../components/MatchweekScheduleItem'
 import ScheduleDropdown from '../../components/ScheduleDropdown'
 
 const ScheduleContainer = styled.div`
@@ -9,18 +10,6 @@ const ScheduleContainer = styled.div`
   justify-content: center;
   align-items: center;  
 `
-
-const MatchRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`
-
-const MatchRowItem = styled.p`
-  padding: 5px;
-`
-
-
 
 const Schedule = ({ schedule }) => {
   const [week, setWeek] = useState(1)
@@ -35,13 +24,7 @@ const Schedule = ({ schedule }) => {
   const ScheduleJSX = schedule
     .filter((item) => item.matchweek === week)
     .map((item) => (
-      <MatchRow key={item.id}>
-        <MatchRowItem>Match Time: {item.match_datetime}</MatchRowItem>
-        <MatchRowItem>Home: {item.home_team_id}</MatchRowItem>
-        <MatchRowItem>Goals: {item.home_goals}</MatchRowItem>
-        <MatchRowItem>Away: {item.away_team_id}</MatchRowItem>
-        <MatchRowItem>Goals: {item.away_goals}</MatchRowItem>
-      </MatchRow>
+      <MatchweekScheduleItem item={item}/>
     ))
 
 
