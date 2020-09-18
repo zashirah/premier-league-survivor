@@ -39,6 +39,15 @@ class LeaguesController < ApplicationController
     @league.destroy
   end
 
+  def add_user_to_league
+    @user = User.find(params[:user_id])
+    @league = League.find(params[:id])
+
+    @league.users.push(@user)
+
+    render json: @league
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_league
