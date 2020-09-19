@@ -33,7 +33,9 @@ class Match < ApplicationRecord
       end
     end
 
-    @match_status = match_datetime < DateTime.now ? @match_status = false : @match_status = true
+    @match_status = match_datetime < DateTime.now ?
+     @match_status = false :
+     @match_status = true
 
     {
       home_allowed: @home_counter < 2,

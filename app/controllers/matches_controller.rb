@@ -34,15 +34,15 @@ class MatchesController < ApplicationController
   end
 
   def user_league_schedule
-    @league = League.find(params[:id])
-    @user = User.find(params[:user_id])
+    # @league = League.find(params[:id])
+    # @user = User.find(params[:user_id])
 
     @matches = Match.all
 
     @new_matches = @matches.map do |match|
       {
         **match.attributes,
-        **match.allowed?(@user.id, @league.id),
+        **match.allowed?(params[:user_id], params[:id]),
         **match.team_names
       }
     end
