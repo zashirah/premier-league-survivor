@@ -6,7 +6,6 @@ class Match < ApplicationRecord
 
   def allowed?(user_id, id) 
     @picks = League.find(id).picks.where(user_id: user_id)
-    # @picks  = Pick.where(`user_id = ? AND league_id = ?`, user_id, id)
 
     @home_counter = 0
     @away_counter = 0
@@ -38,8 +37,8 @@ class Match < ApplicationRecord
       away_allowed: @away_counter < 2,
       matchweek_allowed: @matchweek_counter < 1,
       match_status_allowed: @match_status,
-      home_selected_status: @home_selected_counter > 0,
-      away_selected_status: @away_selected_counter > 0
+      home_selected_status: @home_selected_counter.positive?,
+      away_selected_status: @away_selected_counter.positive?
     }
   end
 

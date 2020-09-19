@@ -58,9 +58,27 @@ const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser }) =
                 }
               />
             )}
+          {
+            // item.away_allowed &&
+            // item.matchweek_allowed &&
+            item.match_status_allowed && item.home_selected_status && (
+              <SecondaryButton
+                buttonText="Unselect"
+                // onClick={() =>
+                //   handleSelection(
+                //     currentUser.id,
+                //     Number(id),
+                //     item.id,
+                //     item.away_team_id
+                //   )
+                // }
+              />
+            )
+          }
           {item.away_allowed &&
             item.matchweek_allowed &&
-            item.match_status_allowed && (
+            item.match_status_allowed &&
+            !item.away_selected_status && (
               <SecondaryButton
                 buttonText="Select Away Team"
                 onClick={() =>
@@ -73,6 +91,23 @@ const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser }) =
                 }
               />
             )}
+          {
+            // item.away_allowed &&
+            // item.matchweek_allowed &&
+            item.match_status_allowed && item.away_selected_status && (
+              <SecondaryButton
+                buttonText="Unselect"
+                // onClick={() =>
+                //   handleSelection(
+                //     currentUser.id,
+                //     Number(id),
+                //     item.id,
+                //     item.away_team_id
+                //   )
+                // }
+              />
+            )
+          }
         </>
       )}
     </MatchRow>
