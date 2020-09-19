@@ -74,9 +74,13 @@ const League = ({ currentUser, handleDelete, handleJoinLeague }) => {
                   buttonText="Join"
                 />
               )}
-            <StyledLink to={`/schedule/users/${currentUser.id}/leagues/${id}`}>
-              <MainButton buttonText="Selections" />
-            </StyledLink>
+            {currentUser && (
+              <StyledLink
+                to={`/schedule/users/${currentUser.id}/leagues/${id}`}
+              >
+                <MainButton buttonText="Selections" />
+              </StyledLink>
+            )}
             {currentUser && currentUser.id === league.manager_id && (
               <AdminButtons>
                 <StyledLink to={`/leagues/${league.id}/edit`}>

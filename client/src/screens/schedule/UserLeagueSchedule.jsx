@@ -48,7 +48,6 @@ const UserLeagueSchedule = ({ currentUser }) => {
     history.push(`/leagues/${league_id}`)
   }
 
-
   const handleUnselect = async (id, league_id) => {
     await deletePick(id)
     history.push(`/leagues/${league_id}`)
