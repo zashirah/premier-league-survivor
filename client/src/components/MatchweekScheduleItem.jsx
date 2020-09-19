@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import { deletePick } from "../services/pick"
 import SecondaryButton from "./SecondaryButton"
 
 const MatchRow = styled.div`
@@ -15,9 +16,10 @@ const MatchRowItem = styled.p`
   font-weight: ${(props) => (props.bold ? "900" : "300")};
 `
 
-const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser }) => {
+const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser, handleUnselect }) => {
   const { user_id, id } = useParams()
   // console.log(league)
+
   return (
     <MatchRow key={item.id}>
       <MatchRowItem>Match Time: {item.match_datetime}</MatchRowItem>
@@ -58,9 +60,20 @@ const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser }) =
                 }
               />
             )}
+          {
+            // item.away_allowed &&
+            // item.matchweek_allowed &&
+            item.match_status_allowed && item.home_selected_status && (
+              <SecondaryButton
+                buttonText="Unselect"
+                onClick={() => handleUnselect(item.selected_id, Number(id))}
+              />
+            )
+          }
           {item.away_allowed &&
             item.matchweek_allowed &&
-            item.match_status_allowed && (
+            item.match_status_allowed &&
+            !item.away_selected_status && (
               <SecondaryButton
                 buttonText="Select Away Team"
                 onClick={() =>
@@ -73,6 +86,16 @@ const MatchweekScheduleItem = ({ item, league, handleSelection, currentUser }) =
                 }
               />
             )}
+          {
+            // item.away_allowed &&
+            // item.matchweek_allowed &&
+            item.match_status_allowed && item.away_selected_status && (
+              <SecondaryButton
+                buttonText="Unselect"
+                onClick={() => handleUnselect(item.selected_id, Number(id))}
+              />
+            )
+          }
         </>
       )}
     </MatchRow>
