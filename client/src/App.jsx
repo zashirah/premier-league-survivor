@@ -55,7 +55,7 @@ function App() {
         </Route>
         {/* <Route path="/picks"></Route> */}
         <Route path="/schedule">
-          <ScheduleContainer />
+          <ScheduleContainer currentUser={currentUser} />
         </Route>
         <Route path="/">
           <UserContainer currentUser={currentUser} />

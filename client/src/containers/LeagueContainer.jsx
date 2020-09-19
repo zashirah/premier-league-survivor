@@ -5,7 +5,7 @@ import LeagueCreate from "../screens/league/LeagueCreate"
 import LeagueEdit from "../screens/league/LeagueEdit"
 import Leagues from "../screens/league/Leagues"
 import League from "../screens/league/League"
-import { getAllLeagues, deleteLeague, postLeague, putLeague } from "../services/league"
+import { getAllLeagues, deleteLeague, postLeague, putLeague, putUserLeague } from "../services/league"
 
 const LeagueContainer = ({ currentUser }) => {
   const history = useHistory()
@@ -39,6 +39,12 @@ const LeagueContainer = ({ currentUser }) => {
     history.push(`/leagues/${id}`)
   }
 
+  const handleJoinLeague = async (userId, leagueId) => {
+    const newUserLeague = await putUserLeague(userId, leagueId)
+    setLeagues(newUserLeague)
+    history.push(`/schedule/users/${userId}/leagues/${leagueId}`)
+  }
+
   return (
     <Switch>
       <Route path="/leagues/create">
@@ -54,7 +60,11 @@ const LeagueContainer = ({ currentUser }) => {
         />
       </Route>
       <Route path="/leagues/:id">
-        <League currentUser={currentUser} handleDelete={handleDelete} />
+        <League
+          currentUser={currentUser}
+          handleDelete={handleDelete}
+          handleJoinLeague={handleJoinLeague}
+        />
       </Route>
       <Route path="/leagues">
         <Leagues currentUser={currentUser} leagues={leagues} />

@@ -24,3 +24,21 @@ export const putLeague = async (id, formData) => {
   const response = await api.put(`/leagues/${id}`, {league: formData})
   return response.data
 }
+
+export const putUserLeague = async (user_id, league_id) => {
+  const response = await api.post(`/users/${user_id}/leagues/${league_id}`)
+  return response.data
+}
+
+export const putUserLeagueSelection = async (user_id, league_id, match_id, team_id) => {
+  const response = await api.post(
+    `/users/${user_id}/leagues/${league_id}/matches/${match_id}/teams/${team_id}`, {
+      pick: {
+        user_id: user_id,
+        league_id: league_id,
+        match_id: match_id,
+        team_id: team_id
+    }}
+  )
+  return response.data
+}

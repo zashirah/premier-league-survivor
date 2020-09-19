@@ -47,7 +47,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const League = ({ currentUser, handleDelete }) => {
+const League = ({ currentUser, handleDelete, handleJoinLeague }) => {
   const [league, setLeague] = useState(null)
   const { id } = useParams()
 
@@ -66,13 +66,17 @@ const League = ({ currentUser, handleDelete }) => {
           <LeftSide>
             <SectionTitle>League Name: {league.name}</SectionTitle>
             <SectionStatus>Status: {league.status}</SectionStatus>
-            {currentUser
-              && !league.users.find(user => user.id === currentUser.id)
-              && league.status === 'open'
-              && (
-              <MainButton buttonText="Join"/>
-            )}
-            <MainButton buttonText="Selections" />
+            {currentUser &&
+              !league.users.find((user) => user.id === currentUser.id) &&
+              league.status === "open" && (
+                <MainButton
+                  onClick={() => handleJoinLeague(currentUser.id, id)}
+                  buttonText="Join"
+                />
+              )}
+            <StyledLink to={`/schedule/users/${currentUser.id}/leagues/${id}`}>
+              <MainButton buttonText="Selections" />
+            </StyledLink>
             {currentUser && currentUser.id === league.manager_id && (
               <AdminButtons>
                 <StyledLink to={`/leagues/${league.id}/edit`}>
