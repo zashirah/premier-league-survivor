@@ -1,7 +1,15 @@
 import React from "react"
+import styled from 'styled-components'
+
+const Hamburger = styled.div`
+  paddingbottom: 10px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
 
 const HamburgerMenu = ({ setNavOpen, navOpen }) => (
-  <div role="button" onClick={() => setNavOpen(!navOpen)}>
+  <Hamburger role="button" onClick={() => setNavOpen(!navOpen)}>
     <svg viewBox="0 0 18 15" width="20">
       <path
         fill="#1C1C21"
@@ -16,7 +24,7 @@ const HamburgerMenu = ({ setNavOpen, navOpen }) => (
         d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"
       />
     </svg>
-  </div>
+  </Hamburger>
 )
 
 export default HamburgerMenu
