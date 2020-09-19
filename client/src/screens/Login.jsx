@@ -70,7 +70,7 @@ const Login = ({ loginSubmit }) => {
         <FormRow>
           <FormRowLabel htmlForm="username">Username:</FormRowLabel>
           <FormRowInput
-            type="text"
+            type="password"
             id="username"
             name="username"
             value={username}

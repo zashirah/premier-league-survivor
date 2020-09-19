@@ -91,7 +91,7 @@ const Register = ({ registerSubmit }) => {
         <FormRow>
           <FormRowLabel htmlForm="password">Password:</FormRowLabel>
           <FormRowInput
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
