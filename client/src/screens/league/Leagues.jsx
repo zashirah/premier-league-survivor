@@ -17,19 +17,35 @@ const LeagueTitle = styled.h3`
 
 `
 
+// const LeagueRow = styled.div`
+//   width: 50vw;
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
+// `
+
 const LeagueRow = styled.div`
-  width: 50vw;
-  display: flex;
+  /* width: 50vw; */
+  display: grid;
+  grid-template-columns: 200px 100px 100px;
   justify-content: space-evenly;
   align-items: center;
+  border: solid var(--dark) 2px;
+  margin: 10px;
+  padding: 5px;
 `
 
+
 const LeagueRowP = styled.p`
-  margin: 0px;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: ${(props) => (props.strong ? "800" : "300")};
 `
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  margin: 0 auto;
 `
 
 
@@ -38,8 +54,8 @@ const Leagues = ({ leagues, currentUser }) => {
     .filter((league) => league.status === "open")
     .map((league) => (
       <LeagueRow key={league.id}>
-        <LeagueRowP>Name: {league.name}</LeagueRowP>
-        <LeagueRowP>Members: {league.member_count}</LeagueRowP>
+        <LeagueRowP>{league.name}</LeagueRowP>
+        <LeagueRowP>{league.member_count}</LeagueRowP>
         <StyledLink to={`/leagues/${league.id}`}>
           <MainButton buttonText="VISIT"  />
         </StyledLink>
@@ -48,7 +64,11 @@ const Leagues = ({ leagues, currentUser }) => {
 
   return (
     <LeaguesContainer>
-      <LeagueTitle>Leagues:</LeagueTitle>
+      <LeagueTitle strong="strong">Leagues:</LeagueTitle>
+      <LeagueRow>
+        <LeagueRowP strong="strong">League Name:</LeagueRowP>
+        <LeagueRowP strong="strong">Members:</LeagueRowP>
+      </LeagueRow>
       {LeaguesJSX}
     </LeaguesContainer>
   )}

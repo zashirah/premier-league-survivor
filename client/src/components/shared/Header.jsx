@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 const Nav = styled.nav`
+  box-sizing: border-box;
   width: 100%;
   max-width: 100vw;
   height: 75px;
@@ -12,29 +13,32 @@ const Nav = styled.nav`
   z-index: 1;
   padding: 0px 40px;
   justify-content: center;
-  transition: all 0.5s ease-in;
+  /* transition: all 0.5s ease-in; */
   background-color: var(--primary);
 `
 
 const NavLeft = styled.div`
-  width: 50%;
-  max-width: 50%;
+  box-sizing: border-box;
+  width: 35%;
+  max-width: 35%;
   height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 `
 const NavRight = styled.div`
-  width: 50%;
-  max-width: 50%;
+  box-sizing: border-box;
+  width: 65%;
+  max-width: 65%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 `
 
 const NavItem = styled.li`
+  box-sizing: border-box;
   margin: 0;
   list-style: none;
   z-index: 2;
