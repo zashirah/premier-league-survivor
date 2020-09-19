@@ -44,6 +44,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
       match_id,
       team_id
     )
+    // const newUserLeagueScheduleSelection = 
     // setUserLeagueSchedule(newSelection)
     history.push(`/leagues/${league_id}`)
   }
