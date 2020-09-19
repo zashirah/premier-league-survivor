@@ -5,6 +5,7 @@ import MatchweekScheduleItem from "../../components/MatchweekScheduleItem"
 import ScheduleDropdown from "../../components/ScheduleDropdown"
 import { getUserLeagueMatches } from "../../services/schedule"
 import { putUserLeagueSelection } from "../../services/league"
+import { deletePick } from "../../services/pick"
 
 const ScheduleContainer = styled.div`
   padding-top: 100px;
@@ -47,6 +48,12 @@ const UserLeagueSchedule = ({ currentUser }) => {
     history.push(`/leagues/${league_id}`)
   }
 
+
+  const handleUnselect = async (id, league_id) => {
+    await deletePick(id)
+    history.push(`/leagues/${league_id}`)
+  }
+
   const ScheduleJSX = userLeagueSchedule
     .filter((item) => item.matchweek === week)
     .map((item) => (
@@ -55,6 +62,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
         league="league"
         handleSelection={handleSelection}
         currentUser={currentUser}
+        handleUnselect={handleUnselect}
       />
     ))
 
