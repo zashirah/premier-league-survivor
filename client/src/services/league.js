@@ -40,5 +40,6 @@ export const putUserLeagueSelection = async (user_id, league_id, match_id, team_
         team_id: team_id
     }}
   )
+  console.log(response)
   return response.data
 }
