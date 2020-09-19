@@ -34,15 +34,17 @@ const StyledLink = styled(Link)`
 
 
 const Leagues = ({ leagues, currentUser }) => {
-  const LeaguesJSX = leagues.filter(league => league.status === 'open').map((league) => (
-    <LeagueRow key={league.id}>
-      <LeagueRowP>Name: {league.name}</LeagueRowP>
-      <LeagueRowP>Members: {league.member_count}</LeagueRowP>
-      <StyledLink to={`/leagues/${league.id}`}>
-        <MainButton buttonText="VISIT" />
-      </StyledLink>
-    </LeagueRow>
-  ))
+  const LeaguesJSX = leagues
+    .filter((league) => league.status === "open")
+    .map((league) => (
+      <LeagueRow key={league.id}>
+        <LeagueRowP>Name: {league.name}</LeagueRowP>
+        <LeagueRowP>Members: {league.member_count}</LeagueRowP>
+        <StyledLink to={`/leagues/${league.id}`}>
+          <MainButton buttonText="VISIT"  />
+        </StyledLink>
+      </LeagueRow>
+    ))
 
   return (
     <LeaguesContainer>

@@ -3,6 +3,10 @@
   --secondary: #FED766;
   --primary-button:  #009FB7;
   --secondary-button:  #E6E6EA;
+  --unselect-button: #E6E6EA;
+  --select-button: #009FB7;
+  --cannot-select: gray;
+  --cannot-unselect: red;
   --light: #F4F4F8;
   --dark: #1C1C21;
 }

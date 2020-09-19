@@ -2,7 +2,7 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { deletePick } from "../services/pick"
-import SecondaryButton from "./SecondaryButton"
+import MainButton from "./MainButton"
 
 // const MatchRow = styled.div`
 //   display: flex;
@@ -16,7 +16,7 @@ import SecondaryButton from "./SecondaryButton"
 
 const MatchRow = styled.div`
   display: grid;
-  grid: ${(props) => (props.league ? "75px / 200px 200px 50px 200px 50px 200px 200px" : "75px / 200px 50px 200px 50px 200px")};
+  grid: ${(props) => (props.league ? "50px / 100px 200px 50px 200px 50px 200px 100px" : "50px / 200px 50px 200px 50px 200px")};
   border: solid var(--dark) 2px;
   margin: 10px;
   padding: 5px;
@@ -24,7 +24,11 @@ const MatchRow = styled.div`
 
 const MatchRowItem = styled.p`
   padding: 5px;
+  margin: 0px auto;
   font-weight: ${(props) => (props.bold ? "900" : "300")};
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
 `
 
 const MatchweekScheduleItem = ({
@@ -45,8 +49,9 @@ const MatchweekScheduleItem = ({
             item.matchweek_allowed &&
             item.match_status_allowed &&
             !item.home_selected_status && (
-              <SecondaryButton
+              <MainButton
                 buttonText="Select Home Team"
+                backgroundColor="#3587A4"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
@@ -58,8 +63,9 @@ const MatchweekScheduleItem = ({
               />
             )}
           {item.match_status_allowed && item.home_selected_status && (
-            <SecondaryButton
+            <MainButton
               buttonText="Unselect"
+              backgroundColor="#EA3449"
               onClick={() => handleUnselect(item.selected_id, Number(id))}
             />
           )}
@@ -67,7 +73,7 @@ const MatchweekScheduleItem = ({
             !item.matchweek_allowed ||
             !item.match_status_allowed) &&
             !item.home_selected_status && (
-              <SecondaryButton buttonText="Can't Select" />
+              <MainButton buttonText="Can't Select" backgroundColor="#E0E0E0" />
             )}
         </>
       )}
@@ -98,8 +104,9 @@ const MatchweekScheduleItem = ({
             item.matchweek_allowed &&
             item.match_status_allowed &&
             !item.away_selected_status && (
-              <SecondaryButton
+              <MainButton
                 buttonText="Select Away Team"
+                backgroundColor="#3587A4"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
@@ -111,8 +118,9 @@ const MatchweekScheduleItem = ({
               />
             )}
           {item.match_status_allowed && item.away_selected_status && (
-            <SecondaryButton
+            <MainButton
               buttonText="Unselect"
+              backgroundColor="#EA3449"
               onClick={() => handleUnselect(item.selected_id, Number(id))}
             />
           )}
@@ -120,7 +128,7 @@ const MatchweekScheduleItem = ({
             !item.matchweek_allowed ||
             !item.match_status_allowed) &&
             !item.away_selected_status && (
-              <SecondaryButton buttonText="Can't Select" />
+              <MainButton buttonText="Can't Select" backgroundColor="#E0E0E0" />
             )}
         </>
       )}
