@@ -10,12 +10,12 @@ class CustomLeagueSerializer < ActiveModel::Serializer
     points = 0
     user.picks.each do |pick|
       if pick.league_id == object.id
-        if pick.team == pick.match.home_team && pick.match.home_goals > pick.match.away_goals
+        if pick.team == pick.match.home_team && !pick.match.home_goals.nil? && pick.match.home_goals > pick.match.away_goals
           points += 3
-        elsif pick.team == pick.match.away_team && pick.match.home_goals < pick.match.away_goals
+        elsif pick.team == pick.match.away_team && !pick.match.away_goals.nil? && pick.match.home_goals < pick.match.away_goals
           points += 3
-        elsif pick.match.away_goals == pick.match.home_goals
-         points += 1
+        elsif pick.match.away_goals == pick.match.home_goals && !pick.match.home_goals.nil?
+          points += 1
         end
       end
     end
