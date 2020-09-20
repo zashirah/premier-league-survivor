@@ -28,6 +28,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
 
   useEffect(() => {
     showLoader()
+    console.log('hi hi hi hi hi')
     const fetchSchedule = async () => {
       const schedule = await getUserLeagueMatches(user_id, id)
       hideLoader()
@@ -54,7 +55,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
     )
     
     setReload((prevState) => !prevState)
-    
+
     userLeagueSchedule.map((match) => {
       if (match.id === matchId) {
         // console.log(match)
@@ -114,7 +115,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
   return (
     <ScheduleContainer>
       <ScheduleDropdown setWeek={setWeek} />
-      {userLeagueSchedule.length > 1 ? ScheduleJSX : <SubmitSelection />}
+      {userLeagueSchedule.length > 1 && ScheduleJSX}
       {loader}
     </ScheduleContainer>
   )
