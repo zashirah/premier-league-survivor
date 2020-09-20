@@ -10,7 +10,9 @@ const StyledButton = styled.button`
   padding: ${(props) => props.mobilePadding || "5px 15px"};
   font-weight: 700;
   box-shadow: 0px 1px 3px 0.5px var(--dark);
-  font-size: ${(props) => props.mobileFontSize || "15px"};
+  @media screen and (max-width: 425px) {
+    font-size: ${(props) => props.mobileFontSize || "15px"};
+  }
 `
 
 const MainButton = ({
