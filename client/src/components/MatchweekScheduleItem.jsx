@@ -65,6 +65,7 @@ const MatchweekScheduleItem = ({
                 buttonText="Select Home Team"
                 backgroundColor="#3587A4"
                 mobileFontSize="8px"
+              mobilePadding="2px 5px"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
