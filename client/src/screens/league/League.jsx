@@ -15,6 +15,10 @@ const LeagueContainer = styled.div`
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
+  @media screen and (max-width: 425px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 const LeagueSection = styled.div`
@@ -28,6 +32,13 @@ const LeagueSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 425px) {
+    width: 80%;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
+    box-shadow: 0px 1.5px 5px 0.5px var(--dark);
+  }
 `
 
 const LeftSide = styled(LeagueSection)``
@@ -64,7 +75,7 @@ const League = ({ currentUser, handleDelete, handleJoinLeague }) => {
       {league && (
         <LeagueContainer>
           <LeftSide>
-            <SectionTitle>League Name: {league.name}</SectionTitle>
+            <SectionTitle>{league.name}</SectionTitle>
             <SectionStatus>Status: {league.status}</SectionStatus>
             {currentUser &&
               !league.users.find((user) => user.id === currentUser.id) &&

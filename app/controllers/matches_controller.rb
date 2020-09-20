@@ -43,7 +43,8 @@ class MatchesController < ApplicationController
       {
         **match.attributes,
         **match.allowed?(params[:user_id], params[:id]),
-        **match.team_names
+        **match.team_names,
+        **match.get_date_string
       }
     end
 
