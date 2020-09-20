@@ -7,6 +7,7 @@ import { getUserLeagueMatches } from "../../services/schedule"
 import { putUserLeagueSelection } from "../../services/league"
 import { deletePick } from "../../services/pick"
 import SubmitSelection from "../../components/SubmitSelection"
+import useFullPageLoader from "../../hooks/useFullPageLoader"
 
 const ScheduleContainer = styled.div`
   padding-top: 100px;
@@ -21,23 +22,28 @@ const UserLeagueSchedule = ({ currentUser }) => {
   const { user_id, id } = useParams()
   const [userLeagueSchedule, setUserLeagueSchedule] = useState([])
   const [week, setWeek] = useState(1)
+  const [reload, setReload] = useState(false)
   const [thisWeekSchedule, setThisWeekSchedule] = useState([])
   // const [makingSelection, setMakingSelection] = useState(false)
 
   useEffect(() => {
+    showLoader()
     const fetchSchedule = async () => {
       const schedule = await getUserLeagueMatches(user_id, id)
+      hideLoader()
       setUserLeagueSchedule(schedule)
     }
     fetchSchedule()
-  }, [userLeagueSchedule])
+  }, [reload])
 
   useEffect(() => {
     const thisWeek = userLeagueSchedule.filter(
       (item) => item.matchweek === week
     )
     setThisWeekSchedule(thisWeek)
-  }, [userLeagueSchedule, week])
+  }, [week])
+
+  const [loader, showLoader, hideLoader] = useFullPageLoader()
 
   const handleSelection = async (userId, leagueId, matchId, teamId) => {
     const newSelection = await putUserLeagueSelection(
@@ -46,6 +52,9 @@ const UserLeagueSchedule = ({ currentUser }) => {
       matchId,
       teamId
     )
+    
+    setReload((prevState) => !prevState)
+    
     userLeagueSchedule.map((match) => {
       if (match.id === matchId) {
         // console.log(match)
@@ -61,9 +70,11 @@ const UserLeagueSchedule = ({ currentUser }) => {
     })
   }
 
-  const handleUnselect = async (id, leagueId, matchId, userId) => {
+  const handleUnselect = async (id, leagueId, matchId) => {
     await deletePick(id)
     // console.log(userLeagueSchedule)
+    setReload(prevState => !prevState)
+
     userLeagueSchedule.map((match) => {
       if (match.id === matchId) {
         // console.log(match)
@@ -72,6 +83,13 @@ const UserLeagueSchedule = ({ currentUser }) => {
           selected_id: "",
           home_selected_status: false,
           away_selected_status: false,
+          matchweek_allowed: true,
+
+        }
+      } else if (match.matchweek === week) {
+        return {
+          ...match,
+          matchweek_allowed: true,
         }
       } else {
         return match
@@ -96,11 +114,8 @@ const UserLeagueSchedule = ({ currentUser }) => {
   return (
     <ScheduleContainer>
       <ScheduleDropdown setWeek={setWeek} />
-      {userLeagueSchedule.length > 1 ? (
-        ScheduleJSX
-      ) : (
-        <SubmitSelection />
-      )}
+      {userLeagueSchedule.length > 1 ? ScheduleJSX : <SubmitSelection />}
+      {loader}
     </ScheduleContainer>
   )
 }
