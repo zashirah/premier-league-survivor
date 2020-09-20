@@ -70,7 +70,7 @@ const Login = ({ loginSubmit }) => {
         <FormRow>
           <FormRowLabel htmlForm="username">Username:</FormRowLabel>
           <FormRowInput
-            type="password"
+            type="text"
             id="username"
             name="username"
             value={username}
@@ -80,7 +80,7 @@ const Login = ({ loginSubmit }) => {
         <FormRow>
           <FormRowLabel htmlForm="password">Password:</FormRowLabel>
           <FormRowInput
-            type="text"
+            type="password"
             id="password"
             name="password"
             value={password}
@@ -89,7 +89,7 @@ const Login = ({ loginSubmit }) => {
         </FormRow>
         <FormRow>
           <MainButton buttonText="Login" />
-          <StyledLink to='/register'>
+          <StyledLink to="/register">
             <MainButton buttonText="Register" />
           </StyledLink>
         </FormRow>

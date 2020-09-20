@@ -33,6 +33,10 @@ const LeagueRow = styled.div`
   border: solid var(--dark) 2px;
   margin: 10px;
   padding: 5px;
+  @media screen and (max-width: 425px) {
+    width: 90vw;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
 `
 
 
