@@ -6,6 +6,7 @@ import ScheduleDropdown from "../../components/ScheduleDropdown"
 import { getUserLeagueMatches } from "../../services/schedule"
 import { putUserLeagueSelection } from "../../services/league"
 import { deletePick } from "../../services/pick"
+import SubmitSelection from "../../components/SubmitSelection"
 
 const ScheduleContainer = styled.div`
   padding-top: 100px;
@@ -21,6 +22,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
   const [userLeagueSchedule, setUserLeagueSchedule] = useState([])
   const [week, setWeek] = useState(1)
   const [thisWeekSchedule, setThisWeekSchedule] = useState([])
+  // const [makingSelection, setMakingSelection] = useState(false)
 
   useEffect(() => {
     const fetchSchedule = async () => {
@@ -28,7 +30,7 @@ const UserLeagueSchedule = ({ currentUser }) => {
       setUserLeagueSchedule(schedule)
     }
     fetchSchedule()
-  }, [])
+  }, [userLeagueSchedule])
 
   useEffect(() => {
     const thisWeek = userLeagueSchedule.filter(
@@ -37,22 +39,44 @@ const UserLeagueSchedule = ({ currentUser }) => {
     setThisWeekSchedule(thisWeek)
   }, [userLeagueSchedule, week])
 
-  const handleSelection = async (user_id, league_id, match_id, team_id) => {
+  const handleSelection = async (userId, leagueId, matchId, teamId) => {
     const newSelection = await putUserLeagueSelection(
-      user_id,
-      league_id,
-      match_id,
-      team_id
+      userId,
+      leagueId,
+      matchId,
+      teamId
     )
-    // const newUserLeagueScheduleSelection = 
-    // setUserLeagueSchedule(newSelection)
-    history.push(`/leagues/${league_id}`)
+    userLeagueSchedule.map((match) => {
+      if (match.id === matchId) {
+        // console.log(match)
+        return {
+          ...match,
+          selected_id: "",
+          home_selected_status: false,
+          away_selected_status: false,
+        }
+      } else {
+        return match
+      }
+    })
   }
 
-
-  const handleUnselect = async (id, league_id) => {
+  const handleUnselect = async (id, leagueId, matchId, userId) => {
     await deletePick(id)
-    history.push(`/leagues/${league_id}`)
+    // console.log(userLeagueSchedule)
+    userLeagueSchedule.map((match) => {
+      if (match.id === matchId) {
+        // console.log(match)
+        return {
+          ...match,
+          selected_id: "",
+          home_selected_status: false,
+          away_selected_status: false,
+        }
+      } else {
+        return match
+      }
+    })
   }
 
   const ScheduleJSX = userLeagueSchedule
@@ -64,13 +88,19 @@ const UserLeagueSchedule = ({ currentUser }) => {
         handleSelection={handleSelection}
         currentUser={currentUser}
         handleUnselect={handleUnselect}
+        // makingSelection={makingSelection}
+        // setMakingSelection={setMakingSelection}
       />
     ))
 
   return (
     <ScheduleContainer>
       <ScheduleDropdown setWeek={setWeek} />
-      {ScheduleJSX}
+      {userLeagueSchedule.length > 1 ? (
+        ScheduleJSX
+      ) : (
+        <SubmitSelection />
+      )}
     </ScheduleContainer>
   )
 }

@@ -15,6 +15,7 @@ import MainButton from "./MainButton"
 // `
 
 const MatchRow = styled.div`
+  /* display: ${(props) => (props.makingSelection ? "none" : "grid")}; */
   display: grid;
   grid: ${(props) =>
     props.league
@@ -36,6 +37,7 @@ const MatchRowItem = styled.p`
   margin: 0px auto;
   font-weight: ${(props) => (props.bold ? "900" : "300")};
   text-align: center;
+  /* display: ${(props) => (props.makingSelection ? "none" : "flex")}; */
   display: flex;
   align-items: center;
   @media screen and (max-width: 425px) {
@@ -50,11 +52,11 @@ const MatchweekScheduleItem = ({
   currentUser,
   handleUnselect,
 }) => {
-  const { user_id, id } = useParams()
+  const { userId, id } = useParams()
   // console.log(league)
 
   return (
-    <MatchRow key={item.id} league={league}>
+    <MatchRow key={item.id} league={league} >
       {league && (
         <>
           {item.home_allowed &&
@@ -82,7 +84,7 @@ const MatchweekScheduleItem = ({
               backgroundColor="#EA3449"
               mobileFontSize="8px"
               mobilePadding="2px 5px"
-              onClick={() => handleUnselect(item.selected_id, Number(id))}
+              onClick={() => handleUnselect(item.selected_id, Number(id), item.id, userId)}
             />
           )}
           {(!item.home_allowed ||
@@ -146,7 +148,7 @@ const MatchweekScheduleItem = ({
               backgroundColor="#EA3449"
               mobileFontSize="8px"
               mobilePadding="2px 5px"
-              onClick={() => handleUnselect(item.selected_id, Number(id))}
+              onClick={() => handleUnselect(item.selected_id, Number(id), item.id, userId)}
             />
           )}
           {(!item.away_allowed ||
