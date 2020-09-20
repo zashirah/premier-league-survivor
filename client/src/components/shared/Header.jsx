@@ -118,7 +118,7 @@ const NavListItem = styled.li`
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
   }
   @media screen and (max-width: 425px) {
-    padding: 0;
+    padding: 10px 0 10px 0;
   }
 `
 
@@ -143,13 +143,13 @@ const Header = ({ currentUser, handleLogout }) => {
           <HamburgerMenu setNavOpen={setNavOpen} navOpen={navOpen} />
           {currentUser ? (
             <StyledLink to="/login" onClick={() => setNavOpen(false)}>
-            <NavListItem
-              navOpen={navOpen}
-              // mobileShow="mobileShow"
-              onClick={handleLogout}
-            >
-              Logout
-            </NavListItem>
+              <NavListItem
+                navOpen={navOpen}
+                // mobileShow="mobileShow"
+                onClick={handleLogout}
+              >
+                Logout
+              </NavListItem>
             </StyledLink>
           ) : (
             <StyledLink to="/login" onClick={() => setNavOpen(false)}>
