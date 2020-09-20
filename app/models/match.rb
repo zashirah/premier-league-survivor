@@ -55,5 +55,11 @@ class Match < ApplicationRecord
     }
   end
 
+  def get_date_string
+    {
+      matchday_string: match_datetime.to_formatted_s(:long_ordinal)
+    }
+  end
+
 
 end

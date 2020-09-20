@@ -16,19 +16,31 @@ import MainButton from "./MainButton"
 
 const MatchRow = styled.div`
   display: grid;
-  grid: ${(props) => (props.league ? "50px / 100px 200px 50px 200px 50px 200px 100px" : "50px / 200px 50px 200px 50px 200px")};
+  grid: ${(props) =>
+    props.league
+      ? "50px / 100px 200px 50px 150px 50px 200px 100px"
+      : "50px / 200px 50px 150px 50px 200px"};
   border: solid var(--dark) 2px;
   margin: 10px;
   padding: 5px;
+  @media screen and (max-width: 425px) {
+    grid: ${(props) =>
+      props.league
+        ? "50px / 1fr 2fr 1fr 2fr 1fr 2fr 1fr"
+        : "50px / 2fr 1fr 2fr 1fr 2fr"};
+  }
 `
 
 const MatchRowItem = styled.p`
   padding: 5px;
   margin: 0px auto;
   font-weight: ${(props) => (props.bold ? "900" : "300")};
-  /* text-align: center; */
+  text-align: center;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 425px) {
+    font-size: 10px;
+  }
 `
 
 const MatchweekScheduleItem = ({
@@ -52,6 +64,7 @@ const MatchweekScheduleItem = ({
               <MainButton
                 buttonText="Select Home Team"
                 backgroundColor="#3587A4"
+                mobileFontSize="8px"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
@@ -66,6 +79,8 @@ const MatchweekScheduleItem = ({
             <MainButton
               buttonText="Unselect"
               backgroundColor="#EA3449"
+              mobileFontSize="8px"
+              mobilePadding="2px 5px"
               onClick={() => handleUnselect(item.selected_id, Number(id))}
             />
           )}
@@ -73,7 +88,12 @@ const MatchweekScheduleItem = ({
             !item.matchweek_allowed ||
             !item.match_status_allowed) &&
             !item.home_selected_status && (
-              <MainButton buttonText="Can't Select" backgroundColor="#E0E0E0" />
+              <MainButton
+                buttonText="Can't Select"
+                backgroundColor="#E0E0E0"
+                mobileFontSize="8px"
+                mobilePadding="2px 5px"
+              />
             )}
         </>
       )}
@@ -87,7 +107,7 @@ const MatchweekScheduleItem = ({
       >
         {item.home_goals}
       </MatchRowItem>
-      <MatchRowItem>Match Time: {item.match_datetime}</MatchRowItem>
+      <MatchRowItem>{item.matchday_string}</MatchRowItem>
       <MatchRowItem
         bold={Number(item.home_goals) < Number(item.away_goals) && true}
       >
@@ -107,6 +127,8 @@ const MatchweekScheduleItem = ({
               <MainButton
                 buttonText="Select Away Team"
                 backgroundColor="#3587A4"
+                mobileFontSize="8px"
+                mobilePadding="2px 5px"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
@@ -121,6 +143,8 @@ const MatchweekScheduleItem = ({
             <MainButton
               buttonText="Unselect"
               backgroundColor="#EA3449"
+              mobileFontSize="8px"
+              mobilePadding="2px 5px"
               onClick={() => handleUnselect(item.selected_id, Number(id))}
             />
           )}
@@ -128,7 +152,12 @@ const MatchweekScheduleItem = ({
             !item.matchweek_allowed ||
             !item.match_status_allowed) &&
             !item.away_selected_status && (
-              <MainButton buttonText="Can't Select" backgroundColor="#E0E0E0" />
+              <MainButton
+                buttonText="Can't Select"
+                backgroundColor="#E0E0E0"
+                mobileFontSize="8px"
+                mobilePadding="2px 5px"
+              />
             )}
         </>
       )}

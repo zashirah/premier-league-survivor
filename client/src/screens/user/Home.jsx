@@ -14,17 +14,22 @@ const HomeContainer = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  padding: 10px;
 `
 
 const LeagueList = styled.ul`
   text-align: center;
   padding: 0;
+  margin: 0;
 `
 
 const LeagueListItem = styled.li`
   list-style: none;
-
+  padding: 0;
+  margin: 0;
 `
+
+const HomeTitle = styled.h3``
 
 const Home = ({ currentUser, userLeagues }) => {
   return (
@@ -35,7 +40,7 @@ const Home = ({ currentUser, userLeagues }) => {
       <StyledLink to="/leagues/create">
         <MainButton buttonText="Create League" />
       </StyledLink>
-      Your Leagues:
+      <HomeTitle>Your Leagues:</HomeTitle>
       {userLeagues &&
         userLeagues.map((league) => (
           <LeagueList>
