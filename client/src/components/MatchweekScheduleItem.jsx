@@ -15,6 +15,7 @@ import MainButton from "./MainButton"
 // `
 
 const MatchRow = styled.div`
+  /* display: ${(props) => (props.makingSelection ? "none" : "grid")}; */
   display: grid;
   grid: ${(props) =>
     props.league
@@ -36,6 +37,7 @@ const MatchRowItem = styled.p`
   margin: 0px auto;
   font-weight: ${(props) => (props.bold ? "900" : "300")};
   text-align: center;
+  /* display: ${(props) => (props.makingSelection ? "none" : "flex")}; */
   display: flex;
   align-items: center;
   @media screen and (max-width: 425px) {
@@ -50,7 +52,7 @@ const MatchweekScheduleItem = ({
   currentUser,
   handleUnselect,
 }) => {
-  const { user_id, id } = useParams()
+  const { userId, id } = useParams()
   // console.log(league)
 
   return (
@@ -65,7 +67,7 @@ const MatchweekScheduleItem = ({
                 buttonText="Select Home Team"
                 backgroundColor="#3587A4"
                 mobileFontSize="8px"
-              mobilePadding="2px 5px"
+                mobilePadding="2px 5px"
                 onClick={() =>
                   handleSelection(
                     currentUser.id,
@@ -82,7 +84,17 @@ const MatchweekScheduleItem = ({
               backgroundColor="#EA3449"
               mobileFontSize="8px"
               mobilePadding="2px 5px"
-              onClick={() => handleUnselect(item.selected_id, Number(id))}
+              onClick={() =>
+                handleUnselect(item.selected_id, Number(id), item.id)
+              }
+            />
+          )}
+          {!item.match_status_allowed && item.home_selected_status && (
+            <MainButton
+              buttonText="Locked In"
+              backgroundColor="#329F5B"
+              mobileFontSize="8px"
+              mobilePadding="2px 5px"
             />
           )}
           {(!item.home_allowed ||
@@ -146,7 +158,17 @@ const MatchweekScheduleItem = ({
               backgroundColor="#EA3449"
               mobileFontSize="8px"
               mobilePadding="2px 5px"
-              onClick={() => handleUnselect(item.selected_id, Number(id))}
+              onClick={() =>
+                handleUnselect(item.selected_id, Number(id), item.id, userId)
+              }
+            />
+          )}
+          {!item.match_status_allowed && item.away_selected_status && (
+            <MainButton
+              buttonText="Locked In"
+              backgroundColor="#329F5B"
+              mobileFontSize="8px"
+              mobilePadding="2px 5px"
             />
           )}
           {(!item.away_allowed ||
