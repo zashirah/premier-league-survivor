@@ -1,6 +1,7 @@
 import React from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
+import { mergeSort } from "../utils/sortLeaderboard"
 
 const LeaderboardTable = styled.table`
   width: 100%;
@@ -29,11 +30,11 @@ const LeaderboardData = styled.td`
 
 const Leaderboard = ({ leagueUsers }) => {
   const { id } = useParams()
-  const LeaderboardJSX = leagueUsers.map((user, index) => (
+  const LeaderboardJSX = mergeSort(leagueUsers).map((user, index) => (
     <LeaderboardRow key={Number(user.id) + Number(id)}>
-      <LeaderboardData >{index + 1}</LeaderboardData>
-      <LeaderboardData >{user.username}</LeaderboardData>
-      <LeaderboardData >{user.total_score}</LeaderboardData>
+      <LeaderboardData>{index + 1}</LeaderboardData>
+      <LeaderboardData>{user.username}</LeaderboardData>
+      <LeaderboardData>{user.total_score}</LeaderboardData>
     </LeaderboardRow>
   ))
 
