@@ -96,6 +96,7 @@ class PickSerializer < ActiveModel::Serializer
   end
 
   def selected_id
-    object.team.id
+    object.id
   end
+
 end
