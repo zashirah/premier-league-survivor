@@ -5,11 +5,15 @@ import MainButton from "../components/MainButton"
 import useFullPageLoader from "../hooks/useFullPageLoader"
 
 const FormContainer = styled.div`
+  box-sizing: border-box;
+  /* top: 85px; */
+  padding-top: 85px;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `
 
 const StyledForm = styled.form`
@@ -22,9 +26,13 @@ const StyledForm = styled.form`
   padding: 25px;
 `
 
-const FormTitle = styled.h3``
+const FormTitle = styled.h3`
+  text-align: center;
+`
 
-const FormP = styled.p``
+const FormP = styled.p`
+  text-align: center;
+`
 
 const FormRow = styled.div`
   width: 100%;
@@ -33,6 +41,13 @@ const FormRow = styled.div`
   flex-direction: row;
   justify-content: space-evenly;
 `
+
+const RulesP = styled.p`
+  width: 80vw;
+  max-width: 500px;
+`
+const RulesList = styled.ul``
+const RulesListItem = styled.li``
 
 const FormRowLabel = styled.label`
   padding: 2px;
@@ -109,6 +124,32 @@ const Login = ({ loginSubmit, currentUser }) => {
           </>
         )}
       </StyledForm>
+      <RulesP>
+        To get started, first create an account. Then you can join and create
+        leagues. Within a league, you can make selections. The selections must
+        follow the below rules.
+      </RulesP>
+      <RulesList>
+        <RulesListItem>
+          You can only make 1 selection each matchweek
+        </RulesListItem>
+        <RulesListItem>
+          You can only select a team twice in a single season
+        </RulesListItem>
+        <RulesListItem>
+          You cannot select a match after it has started
+        </RulesListItem>
+        <RulesListItem>
+          You cannot unselect a match after it has started
+        </RulesListItem>
+      </RulesList>
+      <RulesP>
+        3 points if your team wins. 1 point with a tie. And 0 points with a
+        loss.
+      </RulesP>
+      <RulesP>
+        Good Luck!
+      </RulesP>
       {loader}
     </FormContainer>
   )
