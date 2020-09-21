@@ -12,10 +12,14 @@ const ScheduleContainer = styled.div`
   align-items: center;
 `
 
+const TableViewCheckboxLabel = styled.label``
+const TableViewCheckbox = styled.input``
+
 const PickTitle = styled.h3``
 
 const Picks = ({ currentUser, userPicks, userLeagues, setUserData }) => {
   const [reload, setReload] = useState(false)
+  const [tableView, setTableView] = useState(false)
 
   const handleUnselect = async (id, leagueId, matchId) => {
     await deletePick(id)
@@ -28,7 +32,12 @@ const Picks = ({ currentUser, userPicks, userLeagues, setUserData }) => {
   }
   return (
     <ScheduleContainer>
-      {userPicks &&
+      {/* <TableViewCheckboxLabel>
+        Table View
+        <TableViewCheckbox type="checkbox" value={tableView} onChange={e => setTableView(e.target.checked)}/>
+      </TableViewCheckboxLabel> */}
+      {userPicks && 
+        !tableView &&
         mergeSort(userPicks).map((pick) => (
           <>
             <PickTitle>
@@ -42,6 +51,7 @@ const Picks = ({ currentUser, userPicks, userLeagues, setUserData }) => {
             />
           </>
         ))}
+      
     </ScheduleContainer>
   )
 }
