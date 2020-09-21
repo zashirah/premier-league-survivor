@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import MainButton from "../components/MainButton"
+import useFullPageLoader from "../hooks/useFullPageLoader"
 
 const FormContainer = styled.div`
   width: 100vw;
@@ -51,6 +52,8 @@ const Login = ({ loginSubmit, currentUser }) => {
 
   const { username, password } = formData
 
+  const [loader, showLoader, hideLoader] = useFullPageLoader()
+
   const handleChange = (e) => {
     const { name, value } = e.target
 
@@ -65,6 +68,7 @@ const Login = ({ loginSubmit, currentUser }) => {
       <StyledForm
         onSubmit={(e) => {
           e.preventDefault()
+          showLoader()
           loginSubmit(formData)
         }}
       >
@@ -105,6 +109,7 @@ const Login = ({ loginSubmit, currentUser }) => {
           </>
         )}
       </StyledForm>
+      {loader}
     </FormContainer>
   )
 }

@@ -11,7 +11,7 @@ const ScheduleContainer = styled.div`
   align-items: center;  
 `
 
-const Schedule = ({ schedule }) => {
+const Schedule = ({ schedule, loader }) => {
   const [week, setWeek] = useState(1)
   const [thisWeekSchedule, setThisWeekSchedule] = useState([])
 
@@ -32,6 +32,7 @@ const Schedule = ({ schedule }) => {
     <ScheduleContainer>
       <ScheduleDropdown setWeek={setWeek}/>
       {ScheduleJSX}
+      {loader}
     </ScheduleContainer>
   )
 }
