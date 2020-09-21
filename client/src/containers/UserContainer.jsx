@@ -26,6 +26,7 @@ const UserContainer = ({ currentUser }) => {
           currentUser={currentUser}
           userPicks={userData.picks}
           userLeagues={userData.leagues}
+          setUserData={setUserData}
         />
       </Route>
       <Route path="/">

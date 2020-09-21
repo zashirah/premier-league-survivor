@@ -14,32 +14,23 @@ const ScheduleContainer = styled.div`
 
 const PickTitle = styled.h3``
 
-const Picks = ({ currentUser, userPicks, userLeagues }) => {  
+const Picks = ({ currentUser, userPicks, userLeagues, setUserData }) => {
   const [reload, setReload] = useState(false)
-  const handleUnselect = async (id, leagueId, matchId) => {
-   await deletePick(id)
-   setReload((prevState) => !prevState)
+  // const [picks, setPicks] = useState([])
 
-  //  userLeagueSchedule.map((match) => {
-  //    if (match.id === matchId) {
-  //      return {
-  //        ...match,
-  //        selected_id: "",
-  //        home_selected_status: false,
-  //        away_selected_status: false,
-  //        matchweek_allowed: true,
-  //      }
-  //    } else if (match.matchweek === week) {
-  //      return {
-  //        ...match,
-  //        matchweek_allowed: true,
-  //      }
-  //    } else {
-  //      return match
-  //    }
-  //  })
- }
- 
+  // useEffect(() => {
+  //   setPicks(userPicks)
+  // }, [reload, userPicks])
+
+  const handleUnselect = async (id, leagueId, matchId) => {
+    await deletePick(id)
+    setReload((prevState) => !prevState)
+    setUserData((prevState) => ({
+      ...prevState,
+      picks: userPicks.filter((pick) => pick.id !== id),
+    }))
+    // setPicks(userPicks.filter((pick) => pick.id !== id))
+  }
   return (
     <ScheduleContainer>
       {userPicks &&
