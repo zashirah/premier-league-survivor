@@ -16,11 +16,6 @@ const PickTitle = styled.h3``
 
 const Picks = ({ currentUser, userPicks, userLeagues, setUserData }) => {
   const [reload, setReload] = useState(false)
-  // const [picks, setPicks] = useState([])
-
-  // useEffect(() => {
-  //   setPicks(userPicks)
-  // }, [reload, userPicks])
 
   const handleUnselect = async (id, leagueId, matchId) => {
     await deletePick(id)
