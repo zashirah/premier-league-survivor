@@ -96,6 +96,7 @@ const NavItem = styled.div`
   align-items: center;
   @media screen and (max-width: 768px) {
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
+    font-size: 25px;
   }
 `
 
@@ -116,6 +117,7 @@ const NavListItem = styled.li`
     display: ${(props) => (props.navOpen ? "block" : "none")};
     padding: ${(props) => (props.navOpen ? "10px 0 10px 0" : "10px")};
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
+    font-size: 25px;
   }
   @media screen and (max-width: 425px) {
     padding: 10px 0 10px 0;
