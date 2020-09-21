@@ -1,5 +1,5 @@
 class PickSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :league_id, :team_id, :match_id, :league_name, :matchweek, :picked_team, :home_team, :away_team, :match_datetime, :matchday_string, :matchweek_allowed, :home_allowed, :away_allowed, :match_status_allowed, :home_selected_status, :away_selected_status, :selected_id
+  attributes :id, :user_id, :league_id, :team_id, :match_id, :league_name, :matchweek, :picked_team, :home_team, :away_team, :home_goals, :away_goals, :match_datetime, :matchday_string, :matchweek_allowed, :home_allowed, :away_allowed, :match_status_allowed, :home_selected_status, :away_selected_status, :selected_id
   
   def league_name
     object.league.name
