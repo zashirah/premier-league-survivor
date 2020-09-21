@@ -31,8 +31,8 @@ const NavLeft = styled.div`
   flex-direction: row;
   align-items: center;
   @media screen and (max-width: 768px) {
-    width: 50%;
-    max-width: 50%;
+    width: 60%;
+    max-width: 60%;
     padding-top: 12px;
     padding-bottom: 12px;
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
@@ -50,8 +50,8 @@ const NavRight = styled.div`
   justify-content: flex-end;
   align-items: center;
   @media screen and (max-width: 768px) {
-    width: 50%;
-    max-width: 50%;
+    width: 40%;
+    max-width: 40%;
     padding: 12px;
     flex-direction: ${(props) => (props.navOpen ? "column" : "row")};
     align-items: ${(props) => (props.navOpen ? "flex-end" : "center")};
@@ -96,6 +96,7 @@ const NavItem = styled.div`
   align-items: center;
   @media screen and (max-width: 768px) {
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
+    font-size: 25px;
   }
 `
 
@@ -116,6 +117,7 @@ const NavListItem = styled.li`
     display: ${(props) => (props.navOpen ? "block" : "none")};
     padding: ${(props) => (props.navOpen ? "10px 0 10px 0" : "10px")};
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
+    font-size: 25px;
   }
   @media screen and (max-width: 425px) {
     padding: 10px 0 10px 0;
