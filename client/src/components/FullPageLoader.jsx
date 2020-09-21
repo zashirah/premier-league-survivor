@@ -6,8 +6,8 @@ import { circleKeyFrame } from "../styles/keyFrames.js"
 import eplLogo from "../download.jpeg"
 
 const FullPage = styled.div`
-  width: 80vw;
-  max-width: 1000px;
+  width: 100vw;
+  /* max-width: 1000px; */
   height: 100%;
   box-sizing: border-box;
   position: fixed;

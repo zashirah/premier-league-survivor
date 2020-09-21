@@ -19,6 +19,9 @@ leicester = Team.find_by(name: 'Leicester City')
 villa = Team.find_by(name: 'Aston Villa')
 wolves = Team.find_by(name: 'Wolverhampton')
 
+Match.where("home_team_id = ?  AND away_team_id = ?", burnley.id, man_utd.id).update(match_datetime: DateTime.civil(2021,12,31,0,0,0,0))
+Match.where("home_team_id = ?  AND away_team_id = ?", man_city.id, villa.id).update(match_datetime: DateTime.civil(2021,12,31,0,0,0,0))
+
 Match.where("home_team_id = ?  AND away_team_id = ?", everton.id, west_brom.id).update(home_goals: 5, away_goals: 2)
 Match.where("home_team_id = ?  AND away_team_id = ?", leeds.id, fulham.id).update(home_goals: 4, away_goals: 3)
 Match.where("home_team_id = ?  AND away_team_id = ?", man_utd.id, palace.id).update(home_goals: 1, away_goals: 3)
