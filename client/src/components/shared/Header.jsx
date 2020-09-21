@@ -31,8 +31,8 @@ const NavLeft = styled.div`
   flex-direction: row;
   align-items: center;
   @media screen and (max-width: 768px) {
-    width: 50%;
-    max-width: 50%;
+    width: 60%;
+    max-width: 60%;
     padding-top: 12px;
     padding-bottom: 12px;
     align-items: ${(props) => (props.navOpen ? "flex-start" : "center")};
@@ -50,8 +50,8 @@ const NavRight = styled.div`
   justify-content: flex-end;
   align-items: center;
   @media screen and (max-width: 768px) {
-    width: 50%;
-    max-width: 50%;
+    width: 40%;
+    max-width: 40%;
     padding: 12px;
     flex-direction: ${(props) => (props.navOpen ? "column" : "row")};
     align-items: ${(props) => (props.navOpen ? "flex-end" : "center")};
