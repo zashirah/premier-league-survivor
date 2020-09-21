@@ -5,4 +5,6 @@ class UserSerializer < ActiveModel::Serializer
   # def total_score
   #   object.total_score
   # end
+  has_many :picks
+
 end

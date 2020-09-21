@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Route, Switch, useHistory } from 'react-router-dom'
 
 import Home from "../screens/user/Home"
+import Pick from "../screens/user/Pick"
 import { getUser } from '../services/user'
 
 const UserContainer = ({ currentUser }) => {
@@ -20,10 +21,12 @@ const UserContainer = ({ currentUser }) => {
 
   return (
     <Switch>
+      <Route path="/picks" currentUser={currentUser} userPicks={userData.picks}>
+        <Pick />
+      </Route>
       <Route path="/">
         <Home currentUser={currentUser} userLeagues={userData.leagues} />
       </Route>
-      <Route path="/picks"></Route>
     </Switch>
   )
 }
