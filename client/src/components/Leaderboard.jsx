@@ -1,4 +1,5 @@
 import React from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 
 const LeaderboardTable = styled.table`
@@ -27,11 +28,12 @@ const LeaderboardData = styled.td`
 `
 
 const Leaderboard = ({ leagueUsers }) => {
+  const { id } = useParams()
   const LeaderboardJSX = leagueUsers.map((user, index) => (
-    <LeaderboardRow key={user.id}>
-      <LeaderboardData key={user.id}>{index + 1}</LeaderboardData>
-      <LeaderboardData key={user.id}>{user.username}</LeaderboardData>
-      <LeaderboardData key={user.id}>{user.total_score}</LeaderboardData>
+    <LeaderboardRow key={Number(user.id) + Number(id)}>
+      <LeaderboardData >{index + 1}</LeaderboardData>
+      <LeaderboardData >{user.username}</LeaderboardData>
+      <LeaderboardData >{user.total_score}</LeaderboardData>
     </LeaderboardRow>
   ))
 
