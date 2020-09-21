@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import MainButton from "../components/MainButton"
+import useFullPageLoader from "../hooks/useFullPageLoader"
 
 const FormContainer = styled.div`
   width: 100vw;
@@ -23,6 +24,8 @@ const StyledForm = styled.form`
 
 const FormTitle = styled.h3``
 
+const FormP = styled.p``
+
 const FormRow = styled.div`
   width: 100%;
   padding: 10px 0px;
@@ -41,13 +44,15 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Login = ({ loginSubmit }) => {
+const Login = ({ loginSubmit, currentUser }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   })
 
   const { username, password } = formData
+
+  const [loader, showLoader, hideLoader] = useFullPageLoader()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -63,37 +68,48 @@ const Login = ({ loginSubmit }) => {
       <StyledForm
         onSubmit={(e) => {
           e.preventDefault()
+          showLoader()
           loginSubmit(formData)
         }}
       >
-        <FormTitle>Login:</FormTitle>
-        <FormRow>
-          <FormRowLabel htmlForm="username">Username:</FormRowLabel>
-          <FormRowInput
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={handleChange}
-          ></FormRowInput>
-        </FormRow>
-        <FormRow>
-          <FormRowLabel htmlForm="password">Password:</FormRowLabel>
-          <FormRowInput
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          ></FormRowInput>
-        </FormRow>
-        <FormRow>
-          <MainButton buttonText="Login" />
-          <StyledLink to="/register">
-            <MainButton buttonText="Register" />
-          </StyledLink>
-        </FormRow>
+        {currentUser ? (
+          <>
+            <FormTitle>Welcome, {currentUser.username}!</FormTitle>
+            <FormP>You're logged in already</FormP>
+          </>
+        ) : (
+          <>
+            <FormTitle>Login:</FormTitle>
+            <FormRow>
+              <FormRowLabel htmlForm="username">Username:</FormRowLabel>
+              <FormRowInput
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={handleChange}
+              ></FormRowInput>
+            </FormRow>
+            <FormRow>
+              <FormRowLabel htmlForm="password">Password:</FormRowLabel>
+              <FormRowInput
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              ></FormRowInput>
+            </FormRow>
+            <FormRow>
+              <MainButton buttonText="Login" />
+              <StyledLink to="/register">
+                <MainButton buttonText="Register" />
+              </StyledLink>
+            </FormRow>
+          </>
+        )}
       </StyledForm>
+      {loader}
     </FormContainer>
   )
 }

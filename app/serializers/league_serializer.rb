@@ -9,6 +9,8 @@ class LeagueSerializer < ActiveModel::Serializer
     object.users.count
   end
 
+  # has_many :users
+
   # def joined_ind
   #   object.users.find do |user|
   #     user.id == @current_user.id

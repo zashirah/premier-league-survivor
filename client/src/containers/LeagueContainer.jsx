@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react"
-import { Switch, Route, useHistory } from "react-router-dom"
+import { Switch, Route, useHistory, Redirect } from "react-router-dom"
 
 import LeagueCreate from "../screens/league/LeagueCreate"
 import LeagueEdit from "../screens/league/LeagueEdit"
 import Leagues from "../screens/league/Leagues"
 import League from "../screens/league/League"
-import { getAllLeagues, deleteLeague, postLeague, putLeague, putUserLeague } from "../services/league"
+import {
+  getAllLeagues,
+  deleteLeague,
+  postLeague,
+  putLeague,
+  putUserLeague,
+} from "../services/league"
 
 const LeagueContainer = ({ currentUser }) => {
   const history = useHistory()
@@ -27,15 +33,17 @@ const LeagueContainer = ({ currentUser }) => {
 
   const handleCreate = async (formData) => {
     const newLeague = await postLeague(formData)
-    setLeagues(prevState => [...prevState, newLeague])
+    setLeagues((prevState) => [...prevState, newLeague])
     history.push(`/leagues/${newLeague.id}`)
   }
 
   const handleEdit = async (id, formData) => {
     const updatedLeague = await putLeague(id, formData)
-    setLeagues(prevState => (
-      prevState.map(league =>  league.id === Number(id) ? updatedLeague : league)
-    ))
+    setLeagues((prevState) =>
+      prevState.map((league) =>
+        league.id === Number(id) ? updatedLeague : league
+      )
+    )
     history.push(`/leagues/${id}`)
   }
 
@@ -53,18 +61,27 @@ const LeagueContainer = ({ currentUser }) => {
         )}
       </Route>
       <Route path="/leagues/:id/edit">
-        <LeagueEdit
-          currentUser={currentUser}
-          leagues={leagues}
-          handleEdit={handleEdit}
-        />
+        {!currentUser ? (
+          <Redirect to="/login" />
+        ) : (
+          <LeagueEdit
+            currentUser={currentUser}
+            leagues={leagues}
+            handleEdit={handleEdit}
+          />
+        )}
       </Route>
+
       <Route path="/leagues/:id">
-        <League
-          currentUser={currentUser}
-          handleDelete={handleDelete}
-          handleJoinLeague={handleJoinLeague}
-        />
+        {!currentUser ? (
+          <Redirect to="/login" />
+        ) : (
+          <League
+            currentUser={currentUser}
+            handleDelete={handleDelete}
+            handleJoinLeague={handleJoinLeague}
+          />
+        )}
       </Route>
       <Route path="/leagues">
         <Leagues currentUser={currentUser} leagues={leagues} />

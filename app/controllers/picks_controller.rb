@@ -17,6 +17,33 @@ class PicksController < ApplicationController
   def create
     @pick = Pick.new(pick_params)
 
+    @team_counter = 0
+    
+    @picks = League.find(pick_params[:league_id]).picks.where(user_id: pick_params[:user_id])
+
+    p "These are the picks: #{@picks}"
+    @picks.each do |pick|
+      if pick.match.matchweek == @pick.match.matchweek
+        render json: {
+          name: 'cannot submit'
+        }
+      end
+      if pick.team == @pick.team
+        @team_counter += 1
+        if @team_counter > 1
+          render json: {
+          name: 'cannot submit'
+        }
+      end
+      end
+      if @pick.match.match_datetime < Time.now
+        render json: {
+          error: 'cannot submit'
+        }
+      end
+    end
+    
+
     if @pick.save
       render json: @pick, status: :created, location: @pick
     else
@@ -35,7 +62,13 @@ class PicksController < ApplicationController
 
   # DELETE /picks/1
   def destroy
-    @pick.destroy
+    if @pick.match.match_datetime > Time.now
+      @pick.destroy
+    else 
+        render json: {
+          error: 'cannot submit'
+        }
+    end
   end
 
   private
