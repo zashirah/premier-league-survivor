@@ -23,6 +23,8 @@ const StyledForm = styled.form`
 
 const FormTitle = styled.h3``
 
+const FormP = styled.p``
+
 const FormRow = styled.div`
   width: 100%;
   padding: 10px 0px;
@@ -41,7 +43,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `
 
-const Login = ({ loginSubmit }) => {
+const Login = ({ loginSubmit, currentUser }) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -66,33 +68,42 @@ const Login = ({ loginSubmit }) => {
           loginSubmit(formData)
         }}
       >
-        <FormTitle>Login:</FormTitle>
-        <FormRow>
-          <FormRowLabel htmlForm="username">Username:</FormRowLabel>
-          <FormRowInput
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={handleChange}
-          ></FormRowInput>
-        </FormRow>
-        <FormRow>
-          <FormRowLabel htmlForm="password">Password:</FormRowLabel>
-          <FormRowInput
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          ></FormRowInput>
-        </FormRow>
-        <FormRow>
-          <MainButton buttonText="Login" />
-          <StyledLink to="/register">
-            <MainButton buttonText="Register" />
-          </StyledLink>
-        </FormRow>
+        {currentUser ? (
+          <>
+            <FormTitle>Welcome, {currentUser.username}!</FormTitle>
+            <FormP>You're logged in already</FormP>
+          </>
+        ) : (
+          <>
+            <FormTitle>Login:</FormTitle>
+            <FormRow>
+              <FormRowLabel htmlForm="username">Username:</FormRowLabel>
+              <FormRowInput
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={handleChange}
+              ></FormRowInput>
+            </FormRow>
+            <FormRow>
+              <FormRowLabel htmlForm="password">Password:</FormRowLabel>
+              <FormRowInput
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              ></FormRowInput>
+            </FormRow>
+            <FormRow>
+              <MainButton buttonText="Login" />
+              <StyledLink to="/register">
+                <MainButton buttonText="Register" />
+              </StyledLink>
+            </FormRow>
+          </>
+        )}
       </StyledForm>
     </FormContainer>
   )

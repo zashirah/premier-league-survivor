@@ -23,22 +23,11 @@ class PicksController < ApplicationController
 
     p "These are the picks: #{@picks}"
     @picks.each do |pick|
-      # p pick.match.matchweek
-      # p @pick.match.matchweek
-      # p @pick.match.matchweek == pick.match.matchweek
       if pick.match.matchweek == @pick.match.matchweek
         render json: {
           name: 'cannot submit'
         }
-        # p "Matchweek is the problem #{@pick.match.matchweek}"
-        # p "Matchweek is the problem #{@pick.match.matchweek}"
-        # p "Matchweek is the problem #{@pick.match.matchweek}"
-        # p "Matchweek is the problem #{@pick.match.matchweek}"
-        # p "Matchweek is the problem #{@pick.match.matchweek}"
       end
-      # p pick.team
-      # p @pick.team
-      # p @pick.team == pick.team
       if pick.team == @pick.team
         @team_counter += 1
         if @team_counter > 1
@@ -46,21 +35,11 @@ class PicksController < ApplicationController
           name: 'cannot submit'
         }
       end
-        # p "Team is the problem #{@pick.team}"
-        # p "Team is the problem #{@pick.team}"
-        # p "Team is the problem #{@pick.team}"
-        # p "Team is the problem #{@pick.team}"
-        # p "Team is the problem #{@pick.team}"
       end
       if @pick.match.match_datetime < Time.now
         render json: {
           error: 'cannot submit'
         }
-        # p "Datetime is the problem #{@pick.match.match_datetime}"
-        # p "Datetime is the problem #{@pick.match.match_datetime}"
-        # p "Datetime is the problem #{@pick.match.match_datetime}"
-        # p "Datetime is the problem #{@pick.match.match_datetime}"
-        # p "Datetime is the problem #{@pick.match.match_datetime}"
       end
     end
     

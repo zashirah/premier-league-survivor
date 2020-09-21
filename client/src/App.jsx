@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Layout from './components/shared/Layout';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from "react"
+import Layout from "./components/shared/Layout"
+import { Switch, Route, useHistory, Redirect } from "react-router-dom"
 
-import Login from './screens/Login'
-import { loginUser, registerUser, verifyUser, removeToken } from "./services/auth"
-import Register from './screens/Register';
+import Login from "./screens/Login"
+import {
+  loginUser,
+  registerUser,
+  verifyUser,
+  removeToken,
+} from "./services/auth"
+import Register from "./screens/Register"
 import UserContainer from "./containers/UserContainer"
 import LeagueContainer from "./containers/LeagueContainer"
 import ScheduleContainer from "./containers/ScheduleContainer"
@@ -25,7 +30,7 @@ function App() {
   const loginSubmit = async (loginData) => {
     const userData = await loginUser(loginData)
     setCurrentUser(userData)
-    history.push('/')
+    history.push("/")
   }
 
   const registerSubmit = async (registerData) => {
@@ -45,7 +50,7 @@ function App() {
     <Layout currentUser={currentUser} handleLogout={handleLogout}>
       <Switch>
         <Route path="/login">
-          <Login loginSubmit={loginSubmit} />
+          <Login loginSubmit={loginSubmit} currentUser={currentUser}/>
         </Route>
         <Route path="/register">
           <Register registerSubmit={registerSubmit} />
@@ -57,12 +62,16 @@ function App() {
         <Route path="/schedule">
           <ScheduleContainer currentUser={currentUser} />
         </Route>
-        <Route path="/">
-          <UserContainer currentUser={currentUser} />
-        </Route>
+        {!currentUser ? (
+          <Redirect to="/login" />
+        ) : (
+          <Route path="/">
+            <UserContainer currentUser={currentUser} />
+          </Route>
+        )}
       </Switch>
     </Layout>
   )
 }
 
-export default App;
+export default App
