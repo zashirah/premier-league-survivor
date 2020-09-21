@@ -83,7 +83,13 @@ class PicksController < ApplicationController
 
   # DELETE /picks/1
   def destroy
-    @pick.destroy
+    if @pick.match.match_datetime > Time.now
+      @pick.destroy
+    else 
+        render json: {
+          error: 'cannot submit'
+        }
+    end
   end
 
   private
