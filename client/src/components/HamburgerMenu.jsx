@@ -1,3 +1,5 @@
+// https://www.leveluptutorials.com/tutorials/animating-react-with-framer-motion - this was used during this lesson
+
 import React from "react"
 import styled from 'styled-components'
 
