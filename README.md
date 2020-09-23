@@ -46,20 +46,6 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 
 <br>
 
-### Libraries and Dependencies
-
-|     Library      | Description                                |
-| :--------------: | :----------------------------------------- |
-|      React       | __ |
-|   React Router   | __ |
-| React SemanticUI | __ |
-|     Ruby      | __ |
-|  Rails | __ |
-|  Styled Components | __ |
-|  Framer Motion | __ |
-
-<br>
-
 ### Client (Front End)
 
 #### Wireframes
@@ -205,11 +191,3 @@ src
 3. Views to see what teams have been picked each week and what picks a single user has made.
 
 ***
-
-## Code Showcase
-
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-
-## Code Issues & Resolutions
-
-> Use this section to list of all major issues encountered and their resolution.
