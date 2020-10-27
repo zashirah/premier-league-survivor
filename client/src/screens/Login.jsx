@@ -125,6 +125,10 @@ const Login = ({ loginSubmit, currentUser }) => {
         )}
       </StyledForm>
       <RulesP>
+        If you want to explore the site without creating a profile, you can use
+        the following: username: user2; password: 123456.
+      </RulesP>
+      <RulesP>
         To get started, first create an account. Then you can join and create
         leagues. Within a league, you can make selections. The selections must
         follow the below rules.
@@ -147,9 +151,7 @@ const Login = ({ loginSubmit, currentUser }) => {
         3 points if your team wins. 1 point with a tie. And 0 points with a
         loss.
       </RulesP>
-      <RulesP>
-        Good Luck!
-      </RulesP>
+      <RulesP>Good Luck!</RulesP>
       {loader}
     </FormContainer>
   )

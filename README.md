@@ -1,5 +1,7 @@
 # premier-league-survivor
 
+https://epl-survivor.netlify.app/login
+
 - [Overview](#overview)
 - [MVP](#mvp)
   - [Goals](#goals)
@@ -43,20 +45,6 @@ _The **Premier League Survivor** MVP will allow users to create, join, and edit 
 - _Give a leaderboard for each league_
 - _Make the game logic work with the schedule picker and the backend_
 - _Allow users to close and open leagues that they created_
-
-<br>
-
-### Libraries and Dependencies
-
-|     Library      | Description                                |
-| :--------------: | :----------------------------------------- |
-|      React       | __ |
-|   React Router   | __ |
-| React SemanticUI | __ |
-|     Ruby      | __ |
-|  Rails | __ |
-|  Styled Components | __ |
-|  Framer Motion | __ |
 
 <br>
 
@@ -205,11 +193,3 @@ src
 3. Views to see what teams have been picked each week and what picks a single user has made.
 
 ***
-
-## Code Showcase
-
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-
-## Code Issues & Resolutions
-
-> Use this section to list of all major issues encountered and their resolution.
