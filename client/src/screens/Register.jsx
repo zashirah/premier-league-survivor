@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import useFullPageLoader from "../hooks/useFullPageLoader"
 
 import MainButton from "../components/MainButton"
 
@@ -51,6 +52,8 @@ const Register = ({ registerSubmit }) => {
 
   const { username, email, password } = formData
 
+  const [loader, showLoader, hideLoader] = useFullPageLoader()
+
   const handleChange = (e) => {
     const { name, value } = e.target
 
@@ -64,6 +67,7 @@ const Register = ({ registerSubmit }) => {
       <StyledForm
         onSubmit={(e) => {
           e.preventDefault()
+          showLoader()
           registerSubmit(formData)
         }}
       >
@@ -105,6 +109,7 @@ const Register = ({ registerSubmit }) => {
           <MainButton buttonText="Register" />
         </FormRow>
       </StyledForm>
+      {loader}
     </FormContainer>
   )
 }
