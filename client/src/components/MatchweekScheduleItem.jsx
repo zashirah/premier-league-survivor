@@ -4,18 +4,7 @@ import styled from "styled-components"
 import { deletePick } from "../services/pick"
 import MainButton from "./MainButton"
 
-// const MatchRow = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-//   border: solid var(--dark) 2px;
-//   margin: 10px;
-//   padding: 5px;
-// `
-
 const MatchRow = styled.div`
-  /* display: ${(props) => (props.makingSelection ? "none" : "grid")}; */
   display: grid;
   grid: ${(props) =>
     props.league
@@ -37,7 +26,6 @@ const MatchRowItem = styled.p`
   margin: 0px auto;
   font-weight: ${(props) => (props.bold ? "900" : "300")};
   text-align: center;
-  /* display: ${(props) => (props.makingSelection ? "none" : "flex")}; */
   display: flex;
   align-items: center;
   @media screen and (max-width: 425px) {
@@ -53,7 +41,6 @@ const MatchweekScheduleItem = ({
   handleUnselect,
 }) => {
   const { userId, id } = useParams()
-  // console.log(league)
 
   return (
     <MatchRow key={item.id} league={league}>
